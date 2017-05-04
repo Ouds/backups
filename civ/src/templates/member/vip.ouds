@@ -1,0 +1,28 @@
+{% extends "init.ouds" %}
+
+{% load i18n %}
+
+{% block title %} 贵宾帐号 {% endblock %}
+
+{% block body_id %}member{% endblock %}
+
+{% block flash %} {% endblock %} {% block language %} {% endblock %}
+
+{% block matter %}
+
+	<table width="560" align="center">
+            <caption><h1>关于贵宾帐号</h1></caption>
+	    <tr><td>
+                <h3>尊敬的玩家：</h3>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文明【古代卷】中，贵宾帐号分三个级别：黄金帐号、白银帐号、青铜帐号。<br/><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;黄金帐号可连续建造/升级五个建筑（含一建筑连升五级），三个科技（含一科技连升三级），专家连升三级，五个物资序列，查看建造/升级不足时的详细信息，以及坐标命名权。<br/><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;白银帐号可连续建造/升级三个建筑（含一建筑连升三级），二个科技（含一科技连升二级），专家连升二级，三个物资序列，以及查看建造/升级不足时的详细信息，以及坐标命名权。<br/><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;青铜帐号建造/升级的每个对象均为一个序列，以及坐标命名权，并且绝不影响任何游戏平衡性。<br/><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文明【古代卷】中，贵宾帐号的开通由点击数和在线时长来判定。若非特殊情况，将拒绝您以充值的方式开通贵宾帐号。贵宾帐号开通的目的仅是为了方便在线时间有限的玩家，因此若您在线时间充足，请勿开通贵宾帐号。<br/><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进一步了解，请加入文明【古代卷】游戏QQ群：44948876；或者邮件<a href="mailto:admin@ouds.us">admin@ouds.us</a>联系。<br/><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/city">请继续游戏</a>，谢谢！<br/><br/>
+	    </td></tr>
+	</table>
+
+{% endblock %}
+

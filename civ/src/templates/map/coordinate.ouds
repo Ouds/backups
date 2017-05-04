@@ -1,0 +1,77 @@
+{% extends "base.ouds" %}
+
+{% load i18n read map %}
+
+{% block keywords %}{% if coordinate.name %}{{ coordinate.name }}, {% endif %}{% trans '地图坐标' %}, {% endblock %}
+
+{% block description %}{% if coordinate.name %}{{ coordinate.name }} {% endif %}{% trans '坐标' %}: [{{ coordinate.longitude }}, {{ coordinate.latitude }}]{% trans '，' %}{% trans '海拔' %}: {{ coordinate.altitude }}{% trans '米' %}{% trans '，' %}{% trans '文明地图' %}{% trans '。' %}{% endblock %}
+
+{% block title %}{% if coordinate.name %}{{ coordinate.name }} {% endif %}{% trans '坐标' %}: [{{ coordinate.longitude }}, {{ coordinate.latitude }}] {% trans '海拔' %}: {{ coordinate.altitude }}{% trans '米' %}{% endblock %}
+
+{% block body_id %}coordinate{% endblock %}
+
+{% block content %}
+
+    <br/>
+    <table align="center" style="width:500px; text-align:center">
+        <caption><h2>{% if coordinate.name %}{{ coordinate.name }}{% endif %} {% trans '坐标' %}:&nbsp;[{{ coordinate.longitude }},&nbsp;{{ coordinate.latitude }}]&nbsp;&nbsp;{% trans '海拔' %}:&nbsp;{{ coordinate.altitude }}&nbsp;{% trans '米' %} </h2></caption>
+        <tr>
+            <td colspan="3">
+                <h3>
+                    {% if coordinate.id|is_occupied %}
+                        {% with coordinate.id|is_occupied as city %}
+                            {% trans '国君' %}:&nbsp;<a href="">{{ user.username }}</a>&nbsp;&nbsp;
+                            {% trans '城名' %}:&nbsp;{{ city.name }}&nbsp;&nbsp;
+                            {% trans '文明度' %}:&nbsp;{{ city.civilization_value }}
+                        {% endwith %}
+                    {% else %} 
+                        {% trans '无主' %},&nbsp;<a href="">{% trans '在此坐标建立新城' %}</a>
+                    {% endif %}
+                </h3>
+            </td>
+        </tr>
+        <tr>
+            <td> {% trans '地形' %} </td>
+            <td> {{ coordinate.property|tuple_filter:'COORDINATE_PROPERTY' }} </td>
+            <td rowspan="8">
+                <a href="../../?longitude={{ coordinate.longitude }}&amp;lm=0&amp;latitude={{ coordinate.latitude }}&amp;tm=0">{% trans '以本坐标为地图中心' %}</a>
+                <br/>
+                <img width="126" height="126" src="/media/imgs/map/{% if coordinate.longitude <= -888 and coordinate.longitude >= -989 and coordinate.latitude <= 50 and coordinate.latitude >= -51 %}1/{{ coordinate.id }}{% else %}water{% endif %}.gif" />
+                <br/>
+                <a href="">{% trans '派出侠客' %}</a>
+                <br/>
+                <a href="">{% trans '派出部队' %}</a>
+                <br/>
+                <a href="">{% trans '道士作法反间' %}</a>
+            </td>
+        </tr>
+        <tr style="background-color:black">
+            <td colspan="2"> {% trans '地形' %}{% trans '参数' %} </td>
+        </tr>
+        <tr>
+            <td> {% trans '淡水' %} </td>
+            <td> {{ coordinate.water_parameter }} </td>
+        </tr>
+        <tr>
+            <td> {% trans '粮食' %} </td>
+            <td> {{ coordinate.food_parameter }} </td>
+        </tr>
+        <tr>
+            <td> {% trans '木头' %} </td>
+            <td> {{ coordinate.wood_parameter }} </td>
+        </tr>
+        <tr>
+            <td> {% trans '土石' %} </td>
+            <td> {{ coordinate.clay_stone_parameter }} </td>
+        </tr>
+        <tr>
+            <td> {% trans '矿类' %} </td>
+            <td> {{ coordinate.ore_parameter }} </td>
+        </tr>
+        <tr>
+            <td> {% trans '人口' %} </td>
+            <td> {{ coordinate.people_parameter }} </td>
+        </tr>
+    </table>
+
+{% endblock %}

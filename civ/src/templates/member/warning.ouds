@@ -1,0 +1,24 @@
+{% extends "home.ouds" %}
+
+{% load i18n %}
+
+{% block title %} 警告 {% endblock %}
+
+{% block body_id %}member{% endblock %}
+
+{% block flash %} {% endblock %} {% block language %} {% endblock %}
+
+{% block matter %}
+
+	<table width="560" align="center">
+            <caption><h1>警告</h1></caption>
+	    <tr><td>
+                <h3>尊敬的玩家：</h3>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果您看到这个页面，表明您不是通过正常的游戏通道操作。换句话说，您正在试图攻击文明【古代卷】游戏！因此，您的帐号和以后的所有操作将被在一段时间内记入本游戏特别关注数据库！因为对您的游戏操作进行额外的关注，所以您的游戏速度可能会受一些影响。<br/><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是，这也表明您对网络攻击有一定的经验，有您这样的朋友玩本游戏是我们开发团队的荣幸。我们真诚希望您以后执行攻击操作时，如果发现漏洞，及时进行<a href="/admin" target="_blank">{% trans '缺陷提交' %}</a>。或通过邮箱<font color="red">bug@ouds.us</font>联系我们。我们会在您进行<a href="/admin" target="_blank">{% trans '缺陷提交' %}</a>或邮件联系的第一时间解除您的特别关注状态，同时根据游戏漏洞的严重程度给您不同程度的奖励。<br/><br/>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/city">请继续游戏</a>，谢谢！<br/><br/>
+	    </td></tr>
+	</table>
+
+{% endblock %}
+

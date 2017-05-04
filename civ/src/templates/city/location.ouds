@@ -1,0 +1,122 @@
+{% extends "base.ouds" %}
+
+{% load i18n read %}
+
+{% block keywords %}{% trans '可建造在此位置的建筑' %}, {% endblock %}
+
+{% block description %}{% trans '可建造在此位置的建筑' %}{% trans '。' %}{% endblock %}
+
+{% block title %}{% trans '可建造在此位置的建筑' %}{% endblock %}
+
+{% block js %}<script type="text/javascript" src="/media/js/ajax.js"></script>{% endblock %}
+
+{% block body_id %}location{% endblock %}
+
+{% block content %}
+
+<div align="center"><h3>{% trans '可建在此位置的建筑' %}</h3></div>
+    
+{% for building_element in building_element_list %}
+<fieldset style="margin:5px; padding:5px;">
+    <legend><h3>{% trans building_element.name %}</h3></legend>
+    <div>
+        <div style="float:left; width:80%">{% trans building_element.code %}</div>
+        <div style="float:right; text-align:center"><img src="/media/imgs/city/{{ city.era }}/{{ building_element.code }}.gif" title="{{ building_element.name }}" /></div>
+    </div>
+    <div>{% trans '建造耗费：' %}</div>
+    
+    <table border="1" cellpadding="0" cellspacing="0" align="center" style="width:90%; border-width:0; border-color:gray; border-style:groove; text-align:center;">
+        <tr>
+            <th>粮食</th>
+            <th>木头</th>
+            <th>矿物</th>
+            <th>马匹</th>
+            <th>狗狗</th>
+            <th>黄金</th>
+            <th>人口</th>
+            <th>时间</th>
+        </tr>
+        <tr>
+            <td> {{ building_element.food }} </td>
+            <td> {{ building_element.wood }} </td>
+            <td> {{ building_element.ore }} </td>
+            <td> {{ building_element.horse }} </td>
+            <td> {{ building_element.dog }} </td>
+            <td> {{ building_element.gold }} </td>
+            <td> {{ building_element.people }} </td>
+            <td>
+                {% with building_element.time|int2time as days_time %}
+                    {% if days_time|dict_filter:'days' %} {{ days_time|dict_filter:'days' }}{% trans '天' %} {% endif %}
+                    {{ days_time|dict_filter:'time' }}
+                {% endwith %}
+            </td>
+        </tr>
+    </table>
+
+        <table border="1" cellpadding="0" cellspacing="0" align="center" style="width:90%; border-width:0; border-color:gray; border-style:groove; text-align:center;">
+            <caption><h3>{% trans '建成资源收益' %}</h3></caption>
+            <tr>
+                <th></th>
+                <th>粮食</th>
+                <th>木头</th>
+                <th>矿物</th>
+                <th>黄金</th>
+                <th>人口</th>
+            </tr>
+            <tr>
+                <td>{% trans '速度增加' %}</td>
+                <td> {{ building_element.food_speed }} </td>
+                <td> {{ building_element.wood_speed }} </td>
+                <td> {{ building_element.ore_speed }} </td>
+                <td colspan="2"> / </td>
+            </tr>
+            <tr>
+                <td>{% trans '容量增加' %}</td>
+                <td> {{ building_element.food_storage }} </td>
+                <td> {{ building_element.wood_storage }} </td>
+                <td> {{ building_element.ore_storage }} </td>
+                <td> {{ building_element.gold_storage }} </td>
+                <td> {{ building_element.people_storage }} </td>
+            </tr>
+        </table>
+        
+        {% if not user.profile.vip <= city.improvingbuilding_set.count %}
+            {% with 'dog'|city_force:city as dog %}
+            {% with 'horse'|city_force:city as horse %}
+	            {% if building_element.food <= city.food and building_element.wood <= city.wood and building_element.ore <= city.ore and building_element.horse <= horse.amount and building_element.dog <= dog.amount and building_element.gold <= city.gold and building_element.people <= city.people and not 0|make_tuple:building_element|need_techs:user.get_profile %}
+	                <a href="javascript:call('POST', 'build/', 'location={{ location }}&building_element_id={{ building_element.id }}', null);">{% trans '建造' %}</a>
+	            {% else %}
+	                <strong>
+	                    {% trans '请先研发科技；或资源/钱财/马匹/狗狗/人口不足' %}<br/>
+	                    {% if 1|subtract:user.get_profile.vip %}
+	                        <span class="yellow">
+	                            {% if 0|make_tuple:building_element|need_techs:user.get_profile %}
+	                                {% for tech in 0|make_tuple:building_element|need_techs:user.get_profile %}
+	                                    {% trans '需要' %}{% trans '研发' %}{{ tech.tech_element.name }}
+	                                {% endfor %}
+	                            {% endif %}
+	
+	                            {% trans '粮食' %}:&nbsp;{{ building_element.food|subtract:city.food }}
+	                            {% trans '木头' %}:&nbsp;{{ building_element.wood|subtract:city.wood }}
+	                            {% trans '矿石' %}:&nbsp;{{ building_element.ore|subtract:city.ore }}
+	                            {% trans '马匹' %}:&nbsp;{{ building_element.horse|subtract:horse.amount }}
+	                            {% trans '狗狗' %}:&nbsp;{{ building_element.dog|subtract:dog.amount }}
+	                            {% trans '黄金' %}:&nbsp;{{ building_element.gold|subtract:city.gold }}
+	                            {% trans '人口' %}:&nbsp;{{ building_element.people|subtract:city.people }}
+	                        </span>
+	                    {% else %}
+	                        <a href="/member/vip">{% trans '升级为贵宾帐号（可查看不足的详细信息）' %}</a>
+	                    {% endif %}
+	                </strong>
+	            {% endif %}
+            {% endwith %}{% endwith %}
+        {% else %}
+            {% trans '建筑序列已满' %}
+            {% ifequal user.get_profile.vip 3 %}&nbsp;&nbsp;<a href="/member/vip">{% trans '黄金帐号' %}</a>{% trans '建筑序列为五个' %}{% endifequal %}
+            {% ifequal user.get_profile.vip 1 %}&nbsp;&nbsp;<a href="/member/vip">{% trans '黄金帐号' %}</a>{% trans '建筑序列为五个' %}&nbsp;&nbsp;<a href="/member/vip">{% trans '白银帐号' %}</a>{% trans '建筑序列为三个' %}{% endifequal %}            
+        {% endif %}
+
+</fieldset>
+{% endfor %}
+
+{% endblock %}

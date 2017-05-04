@@ -1,0 +1,55 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tu\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: 长弓骛之 <ouds@ouds.us>\n"
+"Language-Team: ThinkerUnion <ouds@gaiding.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgid "姓氏"
+msgstr "First Name"
+
+msgid "名字"
+msgstr "Last Name"
+
+msgid "长空【古文明卷】"
+msgstr "ChangKong【古文明卷】"
+
+# init.tu
+msgid "长空杳杳"
+msgstr "ChangKongYaoYao"
+
+msgid "您的浏览器默认语言是"
+msgstr "The Default Language Of Your Browser Is"
+
+msgid "切换语言："
+msgstr "Switch Language : "
+
+msgid "和骛之聊天"
+msgstr "Chat With Ouds"
+
+# 邮件
+msgid "ji huo you jian zhu ti %(username)s"
+msgstr "Hello, %(username)s"
+
+msgid "ji huo you jian %(username)s %(expiration_days)s %(activation_key)s"
+msgstr "hello, %(username)s, %(expiration_days)s, %(activation_key)s"
+
+msgid "骛之"
+msgstr "Ouds"
+
+# 地图
+msgid "平原"
+msgstr "plain"
+
+# 城内建筑
+msgid "huang_gong"
+msgstr "huang_gong"
+

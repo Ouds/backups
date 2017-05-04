@@ -1,0 +1,213 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: tu\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ouds CG <webmaster@dingdongquan.com>\n"
+"Language-Team: ThinkerUnion <ouds@gaiding.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# init.tu
+msgid "欢迎您来！"
+msgstr ""
+
+msgid "文明【古代卷】"
+msgstr ""
+
+msgid "您的浏览器默认语言是"
+msgstr ""
+
+msgid "和骛之聊天"
+msgstr ""
+
+# 注册邮件
+msgid "验证码"
+msgstr ""
+
+msgid "ji huo you jian zhu ti %(username)s"
+msgstr "激活邮件：%(username)s，您在文明【古代卷】（www.Ouds.us）游戏注册的帐号激活邮件"
+
+msgid "ji huo you jian %(username)s %(expiration_days)s %(activation_key)s"
+msgstr ""
+"%(username)s，您好！\n"
+"\n"
+"欢迎您注册文明【古代卷】游戏，文明【古代卷】游戏专注于战略战术的推演，同时也会为和平型玩家提供最大程度的休闲。\n"
+"\n"
+"文明【古代卷】游戏将会帮助您用最少的时间实现统帅的理想，达到最大的战略目标。\n"
+"\n"
+"您的帐号必须在 %(expiration_days)s 天之内激活，否则游戏系统会自动清理。\n"
+"\n"
+"点击以下链接激活帐号： http://www.Ouds.us/member/activate/%(activation_key)s ，如果您的链接不能点击，请复制链接到地址栏激活。\n"
+"\n"
+"祝您游戏愉快！"
+
+# 注册
+msgid "姓氏"
+msgstr ""
+
+msgid "名字"
+msgstr ""
+
+# 资源建筑
+msgid "小时"
+msgstr ""
+
+msgid "木场"
+msgstr ""
+
+msgid "土石场"
+msgstr ""
+
+msgid "粮田"
+msgstr ""
+
+msgid "矿场"
+msgstr ""
+
+msgid "水井"
+msgstr ""
+
+# 城防元素
+msgid "城墙"
+msgstr ""
+
+msgid "城门"
+msgstr ""
+
+msgid "瞭望塔"
+msgstr ""
+
+msgid "烽火台"
+msgstr ""
+
+# 城内建筑
+msgid "仓库"
+msgstr ""
+
+msgid "粮仓"
+msgstr ""
+
+msgid "水司"
+msgstr ""
+
+msgid "石坊"
+msgstr ""
+
+msgid "木坊"
+msgstr ""
+
+msgid "窑厂"
+msgstr ""
+
+msgid "酒坊"
+msgstr ""
+
+msgid "马场"
+msgstr ""
+
+msgid "器械厂"
+msgstr ""
+
+msgid "铁铺"
+msgstr ""
+
+msgid "船坞"
+msgstr ""
+
+msgid "兵营"
+msgstr ""
+
+msgid "清真寺"
+msgstr ""
+
+msgid "基督教堂"
+msgstr ""
+
+msgid "寺院"
+msgstr ""
+
+msgid "道观"
+msgstr ""
+
+msgid "魔法学校"
+msgstr ""
+
+msgid "武馆"
+msgstr ""
+
+msgid "景苑"
+msgstr ""
+
+msgid "画坊"
+msgstr ""
+
+msgid "棋院"
+msgstr ""
+
+msgid "酒肆"
+msgstr ""
+
+msgid "乐坊"
+msgstr ""
+
+msgid "膳房"
+msgstr ""
+
+msgid "书院"
+msgstr ""
+
+msgid "市舶司"
+msgstr ""
+
+msgid "营建司"
+msgstr ""
+
+msgid "医馆"
+msgstr ""
+
+msgid "鸿胪寺"
+msgstr ""
+
+msgid "府衙"
+msgstr ""
+
+msgid "皇宫"
+msgstr ""
+
+# 资源名称
+msgid "淡水"
+msgstr ""
+
+msgid "粮食"
+msgstr ""
+
+msgid "木头"
+msgstr ""
+
+msgid "矿物"
+msgstr ""
+
+msgid "kuang_chang"
+msgstr "矿厂是采矿的地方。"
+
+msgid "钱财"
+msgstr ""
+
+# 城内建筑
+msgid "huang_gong"
+msgstr "皇宫，只存在于都城，9个文明点。皇宫的级别决定城市金库的最低保护额。同时皇宫负责训练文官，一个皇宫最多可以同时训练三个文官。"
+
+# 地图
+msgid "平原"
+msgstr ""
+
+# 酒水
+msgid "女儿红"
+msgstr ""
+

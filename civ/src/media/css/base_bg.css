@@ -1,0 +1,36 @@
+﻿@charset "UTF-8";
+
+/* 
+Ouds.us by Thinker Union Software (ThinkerUnion.com)
+Copyright (c) 2007 ThinkerUnion.com. Please don't steal.
+*/
+
+/* SETUP */
+body { margin:0; padding:0; background:#eeeeee url(/media/imgs/bg.gif); color:green; }
+body, th, td { font:14px/1.4em Georgia,Verdana,sans-serif; }
+#container { width:100%; min-width:1000px; max-width:100em; }
+
+/* LINKS */
+a { text-decoration: none; }
+a img { border: none; }
+a:link { color: blue; }
+a:visited { color: gray; }
+a:hover { color: red; background: pink; }
+
+/* COLUMNS */
+#general_info { text-align:center; }
+#city_info { vertical-align:top; }
+#content { vertical-align:top; width:800px; }
+
+/* FIELDSET & LEGEND */
+legend { font-weight:bolder; color:white; }
+
+/* CONTENT */
+hr { color:#ccc; background-color:#ccc; height:1px; border:0; margin:0; }
+form { display:inline; }
+.slash { color:yellow; }
+.errorlist { padding:0; padding-left:10px; margin:0; margin-left:10px; color:yellow; }
+.red { color:red; }
+.green { color:green; }
+.blue { color:blue; }
+.gray { color:gray; }

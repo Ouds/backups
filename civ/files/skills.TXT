@@ -1,0 +1,53 @@
+﻿1、所有在 view 中的方法第一个参数都会由 Django 传入 request 对象，它就是请求数据对象，它是由 Django 自动生成。其中有 GET 和 POST 属性，分别保存两种不同的提交方式的数据，它们都可以象字典一样工作。
+
+2、在 form 中的 method="post" 。你当然可以使用 get ，但是在 Django 的设计风格中认为，使用 POST 表示要对数据进行修改，使用 GET 则只是获取，这是一个设计风格，并且不仅仅属于 Django 。
+
+3、render_to_response ，它可以直接调用模板并返回生成好的文本，直接返回它即可。它接收两个参数，第一个是模板的文件名。但render_to_response 封装了对象，使得我们无法修改其值。
+
+4、在 Django 模板中 {{}} 表示引用一个变量， {%%} 表示代码调用。在变量引用中， Django 还支持对变量属性的访问，同时它还有一定的策略，详细的建议查看 The Django template language 文档。
+
+5、response = HttpResponse(mimetype='text/csv')
+response['Content-Disposition'] = 'attachment; filename=%s.csv' % filename
+这两行是用来处理输出类型和附件，它表明返回的是一个 csv 格式的文件。
+
+6、session 可以翻译为“会话”，做过web的可能都知道。它就是为了实现页面间的数据交换而产生的东西，一般有一个 session_id ，它会保存在浏览器的 cookie 中，因此如果你的浏览器禁止了 cookie ，下面的试验是做不了的。
+
+7、变量的形式: {{ variable }}.当模板引擎遇到一个变量时,就会对变量求值,并在变量所在的位置用变量的值取代变量名,然后输出.使用句点 (.)可以访问变量的属性.
+
+8、标签看起来这样: {% 标签 %}. 标签比起变量来复杂的多: 它负责在输出中创建一些文本,执行循环或逻辑分支, 装入额外信息以供后面的模板变量使用等等.有些标签要求有开始标记和结束标记 (也就是 {% tag %} ... 标签内容 ... {% endtag %}). 下文中的 内建标签参考 描述了所有的内建标签.你也可以创建你自己的标签, 如果你会写 Python 代码的话.
+
+8、Model, Template, View 就合成了 MTV 这几个字母。 Model 是用来针对数据库，同时它可以用来自动生成管理界面， View 在前面我们一直都用它，用来处理请求和响应的相当于MVC框架中的 Controller 的作用， Template 用来生成界面。
+
+9、每个 model 其实在 Django 中就是一个表，你将用它来保存数据。
+
+10、filter() 中使用的参数与一般的 db-api 是一样的，但如果是比较相等，可以为: pagename__exact=pagename 也可以简化为 pagename=pagename 。回车转换的工作其实可以在模板中使用 filter 来完成。
+
+11、在 Django中每个字段都可以有一个提示文本，它是第一个参数，如果没有则会使用字段名。因此我定义的每个字段为了方便都有一个对应的汉字提示文本。Django 提供了许多的字段类型，有些字段类型从数据的取值范围来讲没有什么区别，但之所以有这种区别，是因为：Django 的数据类型不仅仅用于创建数据库，进行 ORM 处理，还用于 admin 的处理。一方面将用来对应不同的 UI 控件，另一方面提供对不同的数据类型将进行不同的数据校验的功能。
+
+12、先是导入 template 模块，然后生成一个 register 的对象，我将用来它注册我所定义的 filter 。我实现的 filter 将命名为 "change_gender" ，它没有参数(一个filter可以接受一个参数，或没有参数)。当 value 为 M 时返回 男 ，当 value 为 F 时返回 女 。然后调用 register 的 filter 来注册它。这里有两种写法，一种是使用 Python 2.4才支持的 decorator(此行注释掉了)，另一种是使用标准的写法。在使用 decorator 时，如果 filter 方法有多个参数的话，需要指明 name 参数，否则可以直接写为:@register.filter，它自动将函数名认为是filter的名字。象 decorator(@register.filter) 这样的用法要在 Python 2.4 中才可以使用，因此如果你的代码也允许在 2.3 上运行的话，不要使用这样的用法。而改用传统的在函数定义之后重定义的方法。就象上面所做的一样。同时还要注意避免使用一些 2.4 的内置函数和语法，如 enumerate , generator 产生式之类的东西。因此上面我使用的是 2.3 的方式。
+
+13、如果你不想每次重启 Apache 来进行测试，可以将: MaxRequestsPerChild 0  改为: MaxRequestsPerChild 1 。
+
+14、$() 是 MochiKit 提供的一个 getElement() 函数别名，它将根据元素的 id 来得到某个对象。
+
+15、在执行 make-messasges.py 时，需要你预先创建 conf/locale 或 locale 目录，而 make-messasges.py是不会自动为你创建的。那么 conf/locale 多用在源码中，象 Django 的源码就是放在 conf/locale 中的。但在运行时，对于自已的项目和应用却是从 ``locale`` 中来找的 。因此还是建议你创建 locale 来存放 po 文件。第一次执行时: make-messages.py -l zh_CN， 这时会生成 locale/zh_CN/LC_MESSAGES/django.po 和 django.pot 两个文件。
+
+16、在MIDDLEWARE_CLASSES中，对于 LocaleMiddleware 的顺序有要求，要求排在 SessionMiddleware 之后，但在其它的 Middleware 之前。
+
+17、Tag 的好处有非常多，比如：1、可以简单化代码的生成。一个 Tag 相当于一个代码片段，把重复的东西做成 Tag可以避免许多重复的工作。2、可以用来组合不同的应用。将一个应用的展示处理成 Tag 的方式，这样就可以在一个模板中组合不同的应用展示 Tag，而且修改模板也相对容易。 
+如果要自定义 Tag ，那么要了解 Tag 的处理过程。在 Django 中， Tag 的处理分为两步。1、编译。即把 Tag 编译为一系列的django.template.Node 结点。2、渲染(Render)。即对每个 Node 调用它们的 render()方法，然后将输出结果拼接起来。
+
+18、View 在 Django 中是用来处理请求的，一个 url 请求上来后经过 Django 的处理首先找到这个 url pattern 对应的 View 模块的某个方法。因此 View 是处理请求的起点，同时，在 View 中的方法需要返回，因此它还是一个请求的终点。因此象 Template 和 Tag 只不过是处理中的某些环节。 View 可处理的范围远大于 Template 而 Tag则只能用在Template中。因此从使用范围上说：View >Template>Tag。Template是用来输出内容的，目前在Django中你可以用它输出文本之类的东西。但象图片之类的非文本的东西，则只能通过View来实现，再有如果想在输出时加入一些特殊的HttpHeader的控制也只能在View中实现。当然，在大多数情况下我们只处理动态的文本生成，其它许多东西都是静态的。象图片之类的可以通过链接来引用。Tag是在Template中被使用的。它的作用很多，如控制模板逻辑，还可以输出内容并做转换等。Tag可以自定义，因此你可以在Tag中做几乎你想做的有关内容输出的任何事，如从数据库中取出内容，然后加工，输出，许多事情。在 Django 中提供了一种方便的方法，可以直接将 url 与模板相对应起来。但并不是说你不需要 View的参与，而是这个View的功能是预先写好的，它的作用很简单，就是在View方法中直接渲染一个模板并输出。因此说，看上去好象是直接对应，但实际上还是有 View 的处理。比如:(r'^ajax/$', 'django.views.generic.simple.direct_to_template',{'template': 'ajax/ajax.html'}),这是在讲 Ajax 的一个 url 的配置，其中使用了 django.views.generic.simple.direct_to_template这个做好的 View 方法。
+
+
+
+
+
+
+
+
+
+
+
+
+

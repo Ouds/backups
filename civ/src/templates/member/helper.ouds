@@ -1,0 +1,27 @@
+{% extends "home.ouds" %}
+
+{% load i18n member %}
+
+{% block title %} {% block catalog %} {% endblock %} {% trans '文明助手' %} {% endblock %}
+
+{% block body_id %}helper{% endblock %}
+
+{% block flash %} {% endblock %} {% block language %} {% endblock %}
+
+{% block matter %}
+
+<table width="100%">
+    <caption><h2> {% trans '文明助手' %} </h2></caption>
+    <tr>
+        <td width="70px" align="center" valign="top">
+            <br/><br/>
+            {% helper_catalog %}
+        </td>
+        <td valign="top">
+            {% block entries %} {% endblock %}
+        </td>
+    </tr>
+</table>
+
+{% endblock %}
+
