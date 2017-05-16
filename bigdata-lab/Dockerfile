@@ -1,8 +1,8 @@
 # hadoop 2.8.0 on Ubuntu 16.04
-# docker build -t ouds/bigdata:0.1 .
+# docker build -t ouds/bigdata:0.1
 
 FROM daocloud.io/library/ubuntu:16.04
-MAINTAINER budshome.com <zzy@budshome.com>
+MAINTAINER budshome.com <2558256956@qq.com>
 
 USER root
 
@@ -17,23 +17,15 @@ RUN ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
 RUN ssh-keygen -q -N "" -t rsa -f /root/.ssh/id_rsa
 RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 
-
 # java
-# RUN mkdir -p /usr/java/default && \
-#     curl -Ls 'http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-linux-x64.tar.gz' -H 'Cookie: oraclelicense=accept-securebackup-cookie' | \
-#     tar --strip-components=1 -xz -C /usr/java/default/
-
 ADD jdk-8u112-linux-x64.tar.gz /usr/local/
 RUN mv /usr/local/jdk1.8.0_112 /usr/local/jdk1.8
 
 ENV JAVA_HOME /usr/local/jdk1.8
 ENV PATH $PATH:$JAVA_HOME/bin
 
-ADD hadoop-2.8.0.tar.gz /usr/local/
-
 # hadoop
-RUN curl -s http://www.eu.apache.org/dist/hadoop/common/hadoop-2.6.0/hadoop-2.6.0.tar.gz | tar -xz -C /usr/local/
-RUN cd /usr/local && ln -s ./hadoop-2.6.0 hadoop
+ADD hadoop-2.8.0.tar.gz /usr/local/
 
 ENV HADOOP_PREFIX /usr/local/hadoop
 RUN sed -i '/^export JAVA_HOME/ s:.*:export JAVA_HOME=/usr/java/default\nexport HADOOP_PREFIX=/usr/local/hadoop\nexport HADOOP_HOME=/usr/local/hadoop\n:' $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
