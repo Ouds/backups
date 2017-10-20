@@ -14,7 +14,7 @@
     "workbench.statusBar.visible": true,
     "workbench.activityBar.visible": true,
     "window.menuBarVisibility": "toggle",
-    "workbench.colorTheme": "Default Light+",
+    "workbench.colorTheme": "Quiet Light",
     "window.zoomLevel": 0,
     "editor.wordWrap": "on",
     "typescript.check.npmIsInstalled": false,
