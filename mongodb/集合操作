@@ -1,0 +1,11 @@
+集合增加一列
+db.companies.update({}, {$set: {date: '2017-11-08'}}, {multi: 1})
+
+删除某个或多个列、内嵌数组内的字段
+db.good.update({},{$unset:{"textureName":""}},{multi:true})
+db.good.update({},{$unset:{"textureName":"","describe":""}},{multi:true})
+db.stu.update({},{$unset:{"addr.state":""}},{multi:true})
+
+查询存在 xx / 不存在 xx 字段的记录
+db.good.find({"goodId": { $exists: true }})
+db.good.find({"textureName": { $exists: false }})
