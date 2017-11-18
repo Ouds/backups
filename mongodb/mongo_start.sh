@@ -1,0 +1,1 @@
+/home/momo/Tools/mongodb/bin/mongod --dbpath /home/momo/Tools/mongodb/data --logpath /home/momo/Tools/mongodb/logs/mongodb.log --logappend &
