@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Eclipse IDE
+Exec=/home/momo/Tools/eclipse/eclipse
+Icon=/home/momo/Tools/eclipse/icon.xpm
+Type=Application
+StartupNotify=true
+Categories=Utility;Development;IDE;
+Path=/home/momo/Tools/eclipse/workspace
+GenericName=Eclipse IDE
+Comment[en_US]=Eclipse IDE
