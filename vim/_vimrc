@@ -1,4 +1,5 @@
-﻿
+﻿"ZZY's vim configuration
+
 set nocompatible
 filetype off
 
