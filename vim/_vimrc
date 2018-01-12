@@ -8,9 +8,6 @@ call vundle#begin('C:/myPro/Vim/.vim/bundle/')
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
-Plugin 'L9'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 call vundle#end()
 filetype plugin indent on
@@ -50,35 +47,35 @@ function MyDiff()
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
-"自动缩进
-set autoindent
 "语法高亮
 syntax on
 "自动检测文件类型并加载相应的设置
 filetype plugin indent on
-"不自动换行
+
+colorscheme evening
+set number
 set nowrap
+
+"自动缩进
+set autoindent
+"自动缩进格式
+set cindent
 "智能对齐方式
 set smartindent
-"softabstop
-set sts=2 
-"tabstop
-set ts=2
-"shiftwidth
-set sw=2
-"smartab
-set sta
+
 set expandtab
+set smarttab
 
-"显示行号
-set number
-"缺省不产生备份文件
+"制表符宽度
+set tabstop=4
+set softtabstop=4
+"缩进空格数
+set shiftwidth=4
+
+"缺省不产生的文件
 set nobackup
-
 set noundofile
 set noswapfile
-
-"colorscheme evening
 
 "NERDTree config
 "vim启动自动打开NERDTree
