@@ -3,8 +3,8 @@
 set nocompatible
 filetype off
 
-set rtp+=C:/myPro/Vim/.vim/bundle/Vundle.vim/
-call vundle#begin('C:/myPro/Vim/.vim/bundle/')
+set rtp+=D:/Vim/bundle/Vundle.vim/
+call vundle#begin('D:/Vim/bundle/')
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
