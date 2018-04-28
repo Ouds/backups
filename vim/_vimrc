@@ -7,7 +7,7 @@ set rtp+=D:/Vim/bundle/Vundle.vim/
 call vundle#begin('D:/Vim/bundle/')
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdtree'
 
 call vundle#end()
@@ -20,7 +20,7 @@ behave mswin
 "set guifont=宋体:h12,Georgia:h12
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8,gb18030,gbk,gb2312,cp936,ucs-bom
+set fileencodings=utf-8,chinese,gb18030,gbk,gb2312,cp936,ucs-bom
 set termencoding=utf-8
 
 set diffexpr=MyDiff()
@@ -99,7 +99,12 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions+=m <Bar>
     \endif<CR>
 
-
+"解决菜单乱码  
+source $VIMRUNTIME/delmenu.vim  
+source $VIMRUNTIME/menu.vim  
+  
+"解决consle输出乱码  
+language messages zh_CN.utf-8  
 
 
 
