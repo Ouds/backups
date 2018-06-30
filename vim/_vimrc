@@ -1,23 +1,15 @@
-ï»¿"ZZY's vim configuration
+"ZZY's vim configuration
 
 set nocompatible
+
 filetype off
-
-set rtp+=D:/Vim/bundle/Vundle.vim/
-call vundle#begin('D:/Vim/bundle/')
-
-Plugin 'VundleVim/Vundle.vim'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdtree'
-
-call vundle#end()
 filetype plugin indent on
 
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
-"set guifont=å®‹ä½“:h12,Georgia:h12
+"set guifont=ËÎÌå:h12,Georgia:h12
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,chinese,gb18030,gbk,gb2312,cp936,ucs-bom
@@ -30,66 +22,67 @@ function MyDiff()
   if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
   let arg1 = v:fname_in
   if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg1 = substitute(arg1, '!', '\!', 'g')
   let arg2 = v:fname_new
   if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg2 = substitute(arg2, '!', '\!', 'g')
   let arg3 = v:fname_out
   if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
+  let arg3 = substitute(arg3, '!', '\!', 'g')
   if $VIMRUNTIME =~ ' '
     if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
+      if empty(&shellxquote)
+        let l:shxq_sav = ''
+        set shellxquote&
+      endif
+      let cmd = '"' . $VIMRUNTIME . '\diff"'
     else
       let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
     endif
   else
     let cmd = $VIMRUNTIME . '\diff'
   endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+  let cmd = substitute(cmd, '!', '\!', 'g')
+  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+  if exists('l:shxq_sav')
+    let &shellxquote=l:shxq_sav
+  endif
 endfunction
 
-"è¯­æ³•é«˜äº®
+"Óï·¨¸ßÁÁ
 syntax on
-"è‡ªåŠ¨æ£€æµ‹æ–‡ä»¶ç±»å‹å¹¶åŠ è½½ç›¸åº”çš„è®¾ç½®
+"×Ô¶¯¼ì²âÎÄ¼şÀàĞÍ²¢¼ÓÔØÏàÓ¦µÄÉèÖÃ
 filetype plugin indent on
 
 colorscheme evening
 set number
 set nowrap
 
-"è‡ªåŠ¨ç¼©è¿›
+"×Ô¶¯Ëõ½ø
 set autoindent
-"è‡ªåŠ¨ç¼©è¿›æ ¼å¼
+"×Ô¶¯Ëõ½ø¸ñÊ½
 set cindent
-"æ™ºèƒ½å¯¹é½æ–¹å¼
+"ÖÇÄÜ¶ÔÆë·½Ê½
 set smartindent
 
 set expandtab
 set smarttab
 
-"åˆ¶è¡¨ç¬¦å®½åº¦
+"ÖÆ±í·û¿í¶È
 set tabstop=4
 set softtabstop=4
-"ç¼©è¿›ç©ºæ ¼æ•°
+"Ëõ½ø¿Õ¸ñÊı
 set shiftwidth=4
 
-"ç¼ºçœä¸äº§ç”Ÿçš„æ–‡ä»¶
+"È±Ê¡²»²úÉúµÄÎÄ¼ş
 set nobackup
 set noundofile
 set noswapfile
 
-"NERDTree config
-"vimå¯åŠ¨è‡ªåŠ¨æ‰“å¼€NERDTree
-autocmd vimenter * NERDTree
-"NERDTreeå¯åŠ¨åé»˜è®¤å…‰æ ‡ä½ç½®åœ¨æ–‡ä»¶ä¸­
-autocmd vimenter * wincmd p
-"NERDTreeè°ƒå‡ºå’Œéšè—å¿«æ·é”®
-map <C-n> :NERDTreeToggle<CR>
-
 "Toggle Menu and Toolbar
-""å®Œå…¨éšè—èœå•
+""ÍêÈ«Òş²Ø²Ëµ¥
 set guioptions-=m
-"å®Œå…¨éšè—å·¥å…·æ 
+"ÍêÈ«Òş²Ø¹¤¾ßÀ¸
 set guioptions-=T
 map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions-=T <Bar>
@@ -99,12 +92,13 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions+=m <Bar>
     \endif<CR>
 
-"è§£å†³èœå•ä¹±ç   
+"½â¾ö²Ëµ¥ÂÒÂë  
 source $VIMRUNTIME/delmenu.vim  
 source $VIMRUNTIME/menu.vim  
   
-"è§£å†³consleè¾“å‡ºä¹±ç   
-language messages zh_CN.utf-8  
+"½â¾öconsleÊä³öÂÒÂë  
+language messages zh_CN.utf-8
+
 
 
 

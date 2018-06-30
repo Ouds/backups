@@ -1,7 +1,7 @@
-1. 删除：HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\gvim项
+﻿1. 删除：HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\gvim项
 2. 新建子项：HKEY_CLASSES_ROOT\*\shell\Vim\command
 3. Vim项设置：
-			默认：Edit with Vim
-			icon：%VIMPATH%\gvim.exe
+	默认：Edit with Vim
+	icon：%VIMPATH%\gvim.exe
 4. command项设置：
-			默认：%VIMPATH%\gvim.exe -p --remote-tab-silent "%1"
+	默认：%VIMPATH%\gvim.exe -p --remote-tab-silent "%1"
