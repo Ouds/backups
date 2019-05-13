@@ -8,5 +8,9 @@ c.NotebookApp.ip='0.0.0.0' 可以指定ip
 c.NotebookApp.password = u'sha1:9b23ce21f3cf:78fe4dc3e506525727...上面生成的password'
 c.NotebookApp.open_browser = False
 c.NotebookApp.port = 8888
+c.NotebookApp.quit_button = False
+
+
+
 
 
