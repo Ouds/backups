@@ -1,11 +1,12 @@
-﻿wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz
+﻿sudo apt install build-essential zlib1g-dev libffi-dev libssl-dev
+
+wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz
 
 tar -xvf Python--3.7.3.tgz
 
 cd Python--3.7.3
 
-pip-ssl: ./configure --with-ssl
-jupyter: ./configure --with-ssl --enable-loadable-sqlite-extensions
+./configure --with-ssl
 
 error: sudo apt install build-essential
 
@@ -16,9 +17,6 @@ sudo -H make install
 zipimport.ZipImportError: sudo apt install zlib1g-dev
 ModuleNotFoundError: No module named '_ctypes': sudo apt install libffi-dev
 SSL error: sudo apt install openssl libssl-dev
-sqlite error: sudo apt install libsqlite3-dev
-
-all-dependencies: sudo apt install build-essential zlib1g-dev libffi-dev openssl libssl-dev libsqlite3-dev
 
 sudo cp /usr/local/bin/python3 /usr/local/bin/python
 sudo cp /usr/local/bin/pip3 /usr/local/bin/pip
@@ -30,9 +28,6 @@ python -V
 python3.7 -V
 
 sudo apt upgrade python3
-
-
-
 
 
 
