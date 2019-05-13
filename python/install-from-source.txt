@@ -19,6 +19,7 @@ ModuleNotFoundError: No module named '_ctypes': sudo apt install libffi-dev
 SSL error: sudo apt install openssl libssl-dev
 
 sudo cp /usr/local/bin/python3 /usr/local/bin/python
+sudo cp /usr/local/bin/pip3 /usr/local/bin/pip
 
 python3 -V
 
