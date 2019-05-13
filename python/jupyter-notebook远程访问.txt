@@ -1,34 +1,12 @@
-﻿sudo apt install build-essential zlib1g-dev libffi-dev libssl-dev
+﻿jupyter notebook --generate-config
 
-wget https://www.python.org/ftp/python/3.7.3/Python-3.7.3.tgz
+jupyter notebook password
 
-tar -xvf Python--3.7.3.tgz
+vi jupyter_notebook_config.py
 
-cd Python--3.7.3
-
-./configure --with-ssl
-
-error: sudo apt install build-essential
-
-sudo make
-
-sudo -H make install
-
-zipimport.ZipImportError: sudo apt install zlib1g-dev
-ModuleNotFoundError: No module named '_ctypes': sudo apt install libffi-dev
-SSL error: sudo apt install openssl libssl-dev
-
-sudo cp /usr/local/bin/python3 /usr/local/bin/python
-sudo cp /usr/local/bin/pip3 /usr/local/bin/pip
-
-python3 -V
-
-python -V
-
-python3.7 -V
-
-sudo apt upgrade python3
-
-
+c.NotebookApp.ip='192.168.2.86'
+c.NotebookApp.password = u'sha1:9b23ce21f3cf:78fe4dc3e506525727...上面生成的password'
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = 8888
 
 
