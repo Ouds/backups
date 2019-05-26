@@ -1,1 +1,0 @@
-start "pgsql" d:\pgsql\bin\pg_ctl -D d:\pgsql\data -l logfile start
