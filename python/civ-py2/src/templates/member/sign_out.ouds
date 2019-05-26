@@ -1,0 +1,36 @@
+{% extends "home.ouds" %}
+
+{% block page_info %}
+	<!--
+	# Author: 骛之
+	# Contact: postmaster@gaiding.com
+	# File Name: trade/goods_detail.gd
+	# Revision: 0.1
+	# Date: 2007-2-15 1:33
+	# Description: the goods list.
+	-->
+{% endblock %}
+
+{% block title %} 会员安全注销 {% endblock %}
+
+{% block body_id %}member{% endblock %}
+
+{% block flash %} {% endblock %} {% block language %} {% endblock %}
+
+{% block matter %}
+
+	<form method="post" action="/member/sign_in/">
+		<table align="center">
+			<caption>安全注销成功！</caption>
+			<tr><td>
+				<br/>
+				尊敬的会员，感谢您今天在本站花费了一些宝贵时间。<br/><br/>
+				您的私人痕迹已经删除成功，请选择下一步操作。<br/><br/>
+				<a href="/member/sign_in/" id="sign_in">重新登陆</a>&nbsp;&nbsp;<a href="/"	id="sign_out">回到首页</a>
+			</td></tr>
+		</table>
+		
+	</form>
+
+{% endblock %}<!-- END #matter -->
+

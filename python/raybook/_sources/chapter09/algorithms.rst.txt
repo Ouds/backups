@@ -1,0 +1,36 @@
+..  = - ` ~ * # ^ . ' " + _ :
+
+5.1. Ape-X分布式优先化经验回放
+`````````````````````````````````
+
+Ape-X Distributed Prioritized Experience Replay
+
+5.2. A3C
+``````````
+
+Asynchronous Advantage Actor-Critic
+
+5.3. DDPG
+````````````
+
+Deep Deterministic Policy Gradients
+
+5.4. DQN
+``````````
+
+Deep Q Networks
+
+5.5. 进化策略
+``````````````
+
+Evolution Strategies
+
+5.6. 策略梯度
+```````````````
+
+Policy Gradients
+
+5.7. 近端策略优化
+```````````````````
+
+Proximal Policy Optimization

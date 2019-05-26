@@ -1,0 +1,108 @@
+﻿{% load i18n read %}
+
+<script type="text/javascript"> now = new Date({% now "Y" %}, {% now "m" %}, {% now "d" %}, {% now "G" %}, {% now "i" %}, {% now "s" %}); </script>
+
+<a href="/help/time">{% trans '时间' %}</a>:&nbsp;{% now "Y-m-d" %}&nbsp;{% if jie_qi %}<a href="#">{{ jie_qi }}</a><span class="slash">/</span>{% endif %}{% now "D" %}&nbsp;<span id="server_current_time" class="red">{% now "G:i:s" %}</span>&nbsp;&nbsp;
+
+<a href="/member/profile">{% trans '国君' %}</a>:&nbsp;<strong>{{ profile.user.username|capfirst }}</strong>&nbsp;(<span class="red" title="{% trans '类型' %}">{{ profile.type|tuple_filter:'MEMBER_TYPE' }}</span>,&nbsp;<span title="{% trans '威望' %}"><a href="#">{{ profile.prestige }}</a></span>)&nbsp;&nbsp;
+
+<a href="/city">{% if city.is_capital %}{% trans '首都' %}{% else %}{% trans '城市' %}{% endif %}</a>:
+{% ifequal city_list.count 1 %}
+    {{ city.name }}&nbsp;[{{ city.coordinate.longitude }},&nbsp;{{ city.coordinate.latitude }},&nbsp;{{ city.coordinate.altitude }}]
+{% else %}
+    <form id="switch_city" action="/city/" method="post">
+        <select name="city_id" onchange="document.forms['switch_city'].submit();">
+            {% for city in city_list %}
+                <option value="{{ city.id }}" {% if city.is_capital %}style="color:red"{% endif %} {% ifequal city.id city_id %}selected="selected"{% endifequal %}>{{ city.name }}&nbsp;[{{ city.coordinate.longitude }},&nbsp;{{ city.coordinate.latitude }},&nbsp;{{ city.coordinate.altitude }}]</option>
+            {% endfor %}
+        </select>
+    </form>
+{% endifequal %}&nbsp;&nbsp;
+
+<a href="/member/tech/list">{% trans '科技' %}</a>:&nbsp;{% if profile.improvingtech_set.count %}{% with profile.improvingtech_set.all|first as improving_tech %}{% trans improving_tech.tech.tech_element.name %}{{ improving_tech.level }}{% trans '级' %}({% if improving_tech.end_time|time2int|dict_filter:'days' %}{{ improving_tech.end_time|time2int|dict_filter:'days' }}{% trans '天' %}&nbsp;{% endif %}<span id="Ouds_{{ improving_tech.id }}"><script>event_timer({{ improving_tech.end_time|time2int|dict_filter:'time' }}, "Ouds_{{ improving_tech.id }}");</script></span>){% endwith %}{% else %}{% trans '无' %}{% endif %}&nbsp;&nbsp;
+
+<a href="/union">{% trans '盟邦' %}</a>:&nbsp;{% if union.id %}{{ union.name }}{% else %}{% trans '未结盟' %}{% endif %}
+
+<table align="center" width="100%" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="20%">
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
+                    	{{ city.season|tuple_filter:'SEASON_TYPE' }}
+                    	{{ city.catastrophe|tuple_filter:'CATASTROPHE_TYPE' }}
+                    	{{ city.era|tuple_filter:'CITY_ERA' }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a href="http://dingdongquan.com">{% trans '叮咚泉营养健康' %}</a>
+                        <a href="http://lospring.com">{% trans '罗泉探险旅游' %}</a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <td width="80%" align="left">
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td rowspan="2">粮食</td>
+                                <td><span id="food" title="{% trans '粮食存量' %}">{{ city.food }}</span><span class="slash">/</span><span id="food_storage" title="{% trans '粮仓容量' %}" class="blue">{{ city.food_storage }}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span title="{% trans '粮食保护' %}">{{ city.food_storage|multiply:0.6 }}</span><span class="slash">/</span><span id="food_speed" title="{% trans '粮食产量' %}" class="red">{{ city.food_speed }}</span></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td rowspan="2">木材</td>
+                                <td><span id="wood" title="{% trans '木材存量' %}">{{ city.wood }}</span><span class="slash">/</span><span id="wood_storage" title="{% trans '木库容量' %}" class="blue">{{ city.wood_storage }}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span title="{% trans '木材保护' %}">{{ city.wood_storage|multiply:0.6 }}</span><span class="slash">/</span><span id="wood_speed" title="{% trans '木材产量' %}" class="red">{{ city.wood_speed }}</span></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td rowspan="2">矿类</td>
+                                <td><span id="ore" title="{% trans '矿类存量' %}">{{ city.ore }}</span><span class="slash">/</span><span id="ore_storage" title="{% trans '矿库容量' %}" class="blue">{{ city.ore_storage }}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span title="{% trans '矿类保护' %}">{{ city.ore_storage|multiply:0.6 }}</span><span class="slash">/</span><span id="ore_speed" title="{% trans '矿类产量' %}" class="red">{{ city.ore_speed }}</span></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td rowspan="2">黄金</td>
+                                <td><span id="gold" title="{% trans '黄金现量' %}">{{ city.gold }}</span><span class="slash">/</span><span id="gold_storage" title="{% trans '金库容量' %}" class="blue">{{ city.gold_storage }}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span title="{% trans '黄金保护' %}">{{ city.gold_storage|multiply:0.6 }}</span><span class="slash">/</span><span id="gold_speed" title="{% trans '税收估量' %}" class="red">{{ city.people|multiply:0.01 }}</span></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td>
+                        <table>
+                            <tr>
+                                <td rowspan="2">人口</td>
+                                <td><span id="people" title="{% trans '人口现数' %}">{{ city.people }}</span><span class="slash">/</span><span id="people_storage" title="{% trans '城市容量' %}" class="blue">{{ city.people_storage }}</span></td>
+                            </tr>
+                            <tr>
+                                <td><span title="{% trans '人口保护' %}">{{ city.people|multiply:0.6 }}</span><span class="slash">/</span><span id="people_speed" title="{% trans '文明度' %}" class="red">{{ city.civilization_value }}</span></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+

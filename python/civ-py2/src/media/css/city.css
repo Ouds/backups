@@ -1,0 +1,127 @@
+﻿@charset "UTF-8";
+
+/* 
+Ouds.us by Thinker Union Software (ThinkerUnion.com)
+Copyright (c) 2007 ThinkerUnion.com. Please don't steal.
+*/
+
+#city_map { position:relative; }
+#city_name { position:absolute; left:351px; top:180px; width:16px; font-size:16px; font-weight:bold; color:#062829; text-align:center; }
+
+/* l: location; t: time location */
+
+.l { font-size:12px; background-color:#092e20; }
+.t { font-size:12px; background-color:#336699; }
+
+/* INNER */
+
+#l0 { position:absolute; left:367px; top:36px; }
+#t0 { position:absolute; left:367px; top:86px; }
+
+#l1 { position:absolute; left:54px; top:422px; }
+#t1 { position:absolute; left:54px; top:472px; }
+
+#l2 { position:absolute; left:700px; top:409px; }
+#t2 { position:absolute; left:700px; top:459px; }
+
+#l3 { position:absolute; left:241px; top:200px; }
+#t3 { position:absolute; left:241px; top:250px; }
+
+#l4 { position:absolute; left:402px; top:195px; }
+#t4 { position:absolute; left:402px; top:245px; }
+
+#l5 { position:absolute; left:484px; top:195px; }
+#t5 { position:absolute; left:484px; top:245px; }
+
+#l6 { position:absolute; left:174px; top:274px; }
+#t6 { position:absolute; left:174px; top:324px; }
+
+#l7 { position:absolute; left:258px; top:274px; }
+#t7 { position:absolute; left:258px; top:324px; }
+
+#l8 { position:absolute; left:382px; top:270px; }
+#t8 { position:absolute; left:382px; top:320px; }
+
+#l9 { position:absolute; left:457px; top:270px; }
+#t9 { position:absolute; left:457px; top:320px; }
+
+#l10 { position:absolute; left:532px; top:270px; }
+#t10 { position:absolute; left:532px; top:320px; }
+
+#l11 { position:absolute; left:605px; top:295px; }
+#t11 { position:absolute; left:605px; top:345px; }
+
+#l12 { position:absolute; left:152px; top:353px; }
+#t12 { position:absolute; left:152px; top:403px; }
+
+#l13 { position:absolute; left:229px; top:381px; }
+#t13 { position:absolute; left:229px; top:431px; }
+
+#l14 { position:absolute; left:306px; top:386px; }
+#t14 { position:absolute; left:306px; top:436px; }
+
+#l15 { position:absolute; left:385px; top:373px; }
+#t15 { position:absolute; left:385px; top:423px; }
+
+#l16 { position:absolute; left:465px; top:383px; }
+#t16 { position:absolute; left:465px; top:433px; }
+
+#l17 { position:absolute; left:543px; top:377px; }
+#t17 { position:absolute; left:543px; top:427px; }
+
+#l18 { position:absolute; left:621px; top:377px; }
+#t18 { position:absolute; left:621px; top:427px; }
+
+#l19 { position:absolute; left:422px; top:121px; }
+#t19 { position:absolute; left:422px; top:171px; }
+
+/* DEFENCE */
+#l20 { position:absolute; left:243px; top:476px; }
+#t20 { position:absolute; left:243px; top:526px; }
+
+#l21 { position:absolute; left:376px; top:503px; }
+#t21 { position:absolute; left:376px; top:553px; }
+
+#l22 { position:absolute; left:230px; top:500px; }
+#t22 { position:absolute; left:230px; top:550px; }
+
+#l23 { position:absolute; left:330px; top:503px; }
+#t23 { position:absolute; left:330px; top:553px; }
+
+/* OUTER */
+
+#l24 { position:absolute; left:170px; top:520px; }
+#t24 { position:absolute; left:170px; top:570px; }
+
+#l25 { position:absolute; left:95px; top:521px; }
+#t25 { position:absolute; left:95px; top:571px; }
+
+#l26 { position:absolute; left:19px; top:521px; }
+#t26 { position:absolute; left:19px; top:571px; }
+
+#l27 { position:absolute; left:18px; top:351px; }
+#t27 { position:absolute; left:18px; top:401px; }
+
+#l28 { position:absolute; left:18px; top:275px; }
+#t28 { position:absolute; left:18px; top:325px; }
+
+#l29 { position:absolute; left:94px; top:275px; }
+#t29 { position:absolute; left:94px; top:325px; }
+
+#l30 { position:absolute; left:18px; top:199px; }
+#t30 { position:absolute; left:18px; top:249px; }
+
+#l31 { position:absolute; left:93px; top:199px; }
+#t31 { position:absolute; left:93px; top:249px; }
+
+#l32 { position:absolute; left:166px; top:199px; }
+#t32 { position:absolute; left:166px; top:249px; }
+
+#l33 { position:absolute; left:618px; top:220px; }
+#t33 { position:absolute; left:618px; top:270px; }
+
+#l34 { position:absolute; left:698px; top:195px; }
+#t34 { position:absolute; left:698px; top:245px; }
+
+#l35 { position:absolute; left:713px; top:271px; }
+#t35 { position:absolute; left:713px; top:321px; }

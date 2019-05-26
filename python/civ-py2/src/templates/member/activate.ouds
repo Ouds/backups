@@ -1,0 +1,16 @@
+{% extends "home.ouds" %}
+
+{% load i18n %}
+
+{% block title %} {% trans '会员激活' %} {% endblock %}
+
+{% block body_id %}member{% endblock %}
+
+{% block flash %} {% endblock %} {% block language %} {% endblock %}
+
+{% block matter %}
+
+    {{ profile }}，<a href="/member/sign_in">{% trans '请点击链接跳至登录页面进行登录' %}</a>
+
+{% endblock %}
+

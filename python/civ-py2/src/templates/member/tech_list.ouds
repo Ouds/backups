@@ -1,0 +1,124 @@
+{% extends "base.ouds" %}
+
+{% load i18n read %}
+
+{% block keywords %}{% for improving_tech in user.get_profile.improvingtech_set.all %}{% trans improving_tech.tech.tech_element.name %}, {% endfor %}{% endblock %}
+
+{% block description %}{% for improving_tech in user.get_profile.improvingtech_set.all %}{% trans improving_tech.tech.tech_element.name %}{% trans '，' %}{% endfor %}{% trans '科技列表' %}{% trans '。' %}{% endblock %}
+
+{% block title %}{% trans '科技列表' %}{% endblock %}
+
+{% block js %}<script type="text/javascript" src="/media/js/ajax.js"></script>{% endblock %}
+
+{% block body_id %}tech_list{% endblock %}
+
+{% block content %}
+
+{# 正在升级的科技 #}
+<fieldset style="margin:5px; padding:5px;">
+    <legend><strong>{% trans '正在研发/升级的科技' %}</strong></legend>
+    {% for improving_tech in user.get_profile.improvingtech_set.all %}
+        <div class="blue">{% trans improving_tech.tech.tech_element.name %} {% trans '升级至级别' %}{{ improving_tech.level }},&nbsp;{% trans '将完成于' %}:&nbsp;{{ improving_tech.end_time|date:'Y-m-d H:i:s' }}.&nbsp;{% trans '时间剩余' %}:&nbsp;{% if improving_tech.end_time|time2int|dict_filter:'days' %} {{ improving_tech.end_time|time2int|dict_filter:'days' }}{% trans '天' %}&nbsp;{% endif %}<span id="{{ improving_tech.id }}"><script>event_timer({{ improving_tech.end_time|time2int|dict_filter:'time' }}, "{{ improving_tech.id }}");</script></span></div>
+    {% empty %}
+        {% trans '当前未研发/升级科技' %}&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/member/vip">{% trans '黄金帐号' %}</a>{% trans '科技序列为三个' %}&nbsp;&nbsp;<a href="/member/vip">{% trans '白银帐号' %}</a>{% trans '科技序列为二个' %}
+    {% endfor %}
+</fieldset>
+
+{# 未研发科技 #}
+{% if tech_element_list %}
+    <div align="center"><h3>{% trans '未研发的科技' %}</h3></div>
+    
+    {% for tech_element in tech_element_list %}
+        <fieldset style="margin:5px; padding:5px;">
+            <legend><strong>{% trans tech_element.name %}</strong></legend>
+            <div>{% trans tech_element.code %}</div>
+            <div>
+                {% trans '文明条件' %}:&nbsp;{{ tech_element.civilization_value }}&nbsp;&nbsp;&nbsp;&nbsp;
+                {% trans '研发耗费' %}:&nbsp;
+                {% trans '黄金' %}:&nbsp;{{ tech_element.gold }};&nbsp;
+                {% trans '时间' %}:&nbsp;{% with tech_element.time|int2time as days_time %}{% if days_time|dict_filter:'days' %}{{ days_time|dict_filter:'days' }}{% trans '天' %} {% endif %}&nbsp;{{ days_time|dict_filter:'time' }}{% endwith %}&nbsp;&nbsp;&nbsp;&nbsp;
+                {% trans '研发收益' %}:&nbsp;{% trans '威望' %}{% trans '增加' %}{{ tech_element.prestige }}
+            </div>
+            <div>
+                {% if not user.get_profile.vip|multiply:0.5|add:1 <= user.get_profile.improvingtech_set.count %}
+                    {% if not 0|make_tuple:tech_element|pre_techs:user.get_profile and tech_element.civilization_value <= city.civilization_value and tech_element.gold <= city.gold %}
+                        <a href="javascript:call('POST', '../research/', 'tech_element_id={{ tech_element.id }}', null);">{% trans '研发' %}</a>
+                    {% else %}
+                        <strong>
+                            {% trans '请先研发/升级科技；或文明条件或黄金不足' %}
+                            {% if 1|subtract:user.get_profile.vip %}
+                                <span class="yellow">
+			                        {% if 0|make_tuple:tech_element|pre_techs:user.get_profile %}
+			                            {% for tech in 0|make_tuple:tech_element|pre_techs:user.get_profile %}
+			                                {% trans '需要' %}{% if tech.level %}{% trans '升级' %}{{ tech.level|add:1 }}{% trans '级' %}{% else %}{% trans '研发' %}{% endif %}{{ tech.tech_element.name }}
+			                            {% endfor %}
+			                        {% endif %}                                  
+                                    {% trans '文明' %}:&nbsp;{{ tech_element.civilization_value|subtract:city.civilization_value }}
+                                    {% trans '黄金' %}:&nbsp;{{ tech_element.gold|subtract:city.gold }}
+                                </span>
+                            {% else %}
+                                <a href="/member/vip">{% trans '升级为贵宾帐号（可查看不足的详细信息）' %}</a>
+                            {% endif %}
+                        </strong>
+                    {% endif %}
+                {% else %}
+                    {% trans '科技序列已满' %}
+                    {% ifequal user.get_profile.vip 3 %}&nbsp;&nbsp;<a href="/member/vip">{% trans '黄金帐号' %}</a>{% trans '科技序列为三个' %}{% endifequal %}
+                    {% ifequal user.get_profile.vip 1 %}&nbsp;&nbsp;<a href="/member/vip">{% trans '黄金帐号' %}</a>{% trans '科技序列为三个' %}&nbsp;&nbsp;<a href="/member/vip">{% trans '白银帐号' %}</a>{% trans '科技序列为二个' %}{% endifequal %}
+                {% endif %}
+            </div>
+        </fieldset>
+    {% endfor %}
+{% endif %}
+
+{# 待升级科技 #}
+{% if tech_researched_list.count %}
+    <div align="center"><h3>{% trans '待升级的科技' %}</h3></div>
+
+    {% for tech in tech_researched_list %}
+        <fieldset style="margin:5px; padding:5px;">
+        {% with tech.improvingtech_set.count as improving_tech_count %}
+        <legend><strong>{% trans tech.tech_element.name %} {{ tech.level }}{% trans '级' %}{% if improving_tech_count %} - <span class="red">{{ tech.level|add:improving_tech_count }}{% trans '级' %}</span>{% endif %}</h3></strong></legend>
+            <div>{% trans tech.tech_element.code %}</div>
+            <div>
+                {% trans '文明条件' %}:&nbsp;{{ tech.level|add:improving_tech_count|add:1|level_arithmetic:tech.tech_element.civilization_value }}&nbsp;&nbsp;&nbsp;&nbsp;
+                {% trans '升级耗费' %}:&nbsp;
+                {% trans '黄金' %}:&nbsp;{{ tech.level|add:improving_tech_count|add:1|level_arithmetic:tech.tech_element.gold }};&nbsp;
+                {% trans '时间' %}:&nbsp;{% with tech.level|add:improving_tech_count|add:1|level_arithmetic:tech.tech_element.time|int2time as days_time %}{% if days_time|dict_filter:'days' %}{{ days_time|dict_filter:'days' }}{% trans '天' %} {% endif %}&nbsp;{{ days_time|dict_filter:'time' }}{% endwith %}&nbsp;&nbsp;&nbsp;&nbsp;
+                {% trans '升级收益' %}:&nbsp;{% trans '威望' %}{% trans '增加' %}{{ tech.tech_element.prestige }}
+            </div>
+            <div>
+                {% if not user.get_profile.vip|multiply:0.5|add:1 <= user.get_profile.improvingtech_set.count %}
+                    {% if not 1|make_tuple:tech|pre_techs:user.get_profile and tech.level|add:improving_tech_count|add:1|level_arithmetic:tech.tech_element.civilization_value <= city.civilization_value and tech.level|add:improving_tech_count|add:1|level_arithmetic:tech.tech_element.gold <= city.gold %}
+                        <a href="javascript:call('POST', '../improve/', 'tech_id={{ tech.id }}', null);">{% trans '升级至级别' %}{{ tech.level|add:improving_tech_count|add:1 }}</a>
+                    {% else %}
+                        <strong>
+                            {% trans '请先研发/升级科技；或文明条件或黄金不足' %}
+                            {% if 1|subtract:user.get_profile.vip %}
+                                <span class="yellow">
+			                        {% if 1|make_tuple:tech|pre_techs:user.get_profile %}
+			                            {% for tech in 1|make_tuple:tech|pre_techs:user.get_profile %}
+			                                {% trans '需要' %}{% if tech.level %}{% trans '升级' %}{{ tech.level|add:1 }}{% trans '级' %}{% else %}{% trans '研发' %}{% endif %}{{ tech.tech_element.name }}
+			                            {% endfor %}
+			                        {% endif %}  
+                                    {% trans '文明' %}:&nbsp;{{ tech.level|add:improving_tech_count|add:1|level_arithmetic:tech.tech_element.civilization_value|subtract:city.civilization_value }}
+                                    {% trans '黄金' %}:&nbsp;{{ tech.level|add:improving_tech_count|add:1|level_arithmetic:tech.tech_element.gold|subtract:city.gold }}
+                                </span>
+                            {% else %}
+                            <a href="/member/vip">{% trans '升级为贵宾帐号（可查看不足的详细信息）' %}</a>
+                            {% endif %}
+                        </strong>
+                    {% endif %}
+                {% else %}
+                    {% trans '科技序列已满' %}
+                    {% ifequal user.get_profile.vip 3 %}&nbsp;&nbsp;<a href="/member/vip">{% trans '黄金帐号' %}</a>{% trans '科技序列为三个' %}{% endifequal %}
+                    {% ifequal user.get_profile.vip 1 %}&nbsp;&nbsp;<a href="/member/vip">{% trans '黄金帐号' %}</a>{% trans '科技序列为三个' %}&nbsp;&nbsp;<a href="/member/vip">{% trans '白银帐号' %}</a>{% trans '科技序列为二个' %}{% endifequal %}
+                {% endif %}
+            </div>
+        {% endwith %}
+        </fieldset>
+    {% endfor %}
+{% endif %}
+    
+{% endblock %}

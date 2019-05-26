@@ -1,0 +1,29 @@
+..  = - ` ~ * # ^ . ' " + _ :
+
+**第8章 Ray Tune高阶**
+===================================
+
+1. 概述
+---------
+
+2. 训练配置
+-------------
+
+.. toctree::
+    experiment-configuration.rst
+
+3. HyperBand与Early Stopping
+------------------------------
+
+.. toctree::
+    hyperband-early-stopping.rst
+
+4. 人口基础训练
+----------------
+
+.. toctree::
+    population-based-training
+
+5. 小结
+---------
+

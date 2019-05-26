@@ -1,0 +1,35 @@
+{% extends "admin/base_site.html" %}
+
+{% load i18n %}
+
+{% block breadcrumbs %}<div class="breadcrumbs"><a href="/">{% trans "Home" %}</a> &rsaquo; {% trans "Server error" %}</div>{% endblock %}
+
+{% block title %}{% trans 'Server error (500)' %}{% endblock %}
+
+{% block content %}
+
+<h1>{% trans 'Server Error <em>(500)</em>' %}</h1>
+
+<table>
+    <tr>
+        <td>
+            <br/><br/><br/><br/><br/><br/>
+				{% trans "出现此错误页面可能是因为以下几点：" %}
+				<ol>
+					<li>{% trans "非法操作" %}</li>
+					<li>{% trans "服务器异常" %}</li>
+					<li>{% trans "系统缺陷" %}</li>
+				</ol>
+            	{% trans "There's been an error. It's been reported to the site administrators via e-mail and should be fixed shortly. Thanks for your patience." %}
+            <br/><hr/><br/>
+            <a href="/admin" target="_blank">缺陷提交</a>
+            <br/><hr/><br/>
+            <a href="/city">返回城市</a>
+        </td>
+        <td>
+            <a href="/city"><img src="/media/imgs/error.gif"></a>
+        </td>
+    </tr>
+</table>    
+
+{% endblock %}

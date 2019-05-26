@@ -1,0 +1,1 @@
+d:\pgsql\bin\pg_ctl stop -D d:\pgsql\data

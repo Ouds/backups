@@ -1,0 +1,90 @@
+{% extends "base.ouds" %}
+
+{% load i18n read %}
+
+{% block keywords %}{% trans '城市布局' %}, {% endblock %}
+
+{% block description %}{% trans '城市布局' %}{% trans '。' %}{% endblock %}
+
+{% block title %}{% trans '城市布局' %}{% endblock %}
+
+{% block css %}<link rel="stylesheet" type="text/css" href="/media/css/city.css" media="all" />{% endblock %}
+
+{% block body_id %}city{% endblock %}
+
+{% block content %}
+
+<form id="city_location" action="location/" method="post"><input type="hidden" id="location" name="location" /></form>
+<script type="text/javascript">
+    function city_location(location){
+        document.getElementById("location").value = location;
+        document.forms["city_location"].submit();
+    }
+</script>
+
+<map name="city" id="city">
+    <area shape="rect" coords="545,3,787,21" href="http://DingDongQuan.com" target="_blank" title="叮咚泉 DingDongQuan.com" alt="叮咚泉 DingDongQuan.com" />
+    <area shape="rect" coords="607,297,667,357" href="javascript:city_location(11);" title="空地" alt="空地" />
+    <area shape="rect" coords="702,411,762,471" href="javascript:city_location(2);" title="空地" alt="空地" />
+    <area shape="rect" coords="623,379,683,439" href="javascript:city_location(18);" title="空地" alt="空地" />
+    <area shape="rect" coords="56,424,140,486" href="javascript:city_location(1);" title="空地" alt="空地" />
+    <area shape="rect" coords="545,379,605,439" href="javascript:city_location(17);" title="空地" alt="空地" />
+    <area shape="rect" coords="467,385,527,445" href="javascript:city_location(16);" title="空地" alt="空地" />
+    <area shape="rect" coords="387,375,447,435" href="javascript:city_location(15);" title="空地" alt="空地" />
+    <area shape="rect" coords="308,388,368,448" href="javascript:city_location(14);" title="空地" alt="空地" />
+    <area shape="rect" coords="231,383,291,443" href="javascript:city_location(13);" title="空地" alt="空地" />
+    <area shape="rect" coords="154,355,214,415" href="javascript:city_location(12);" title="空地" alt="空地" />
+    <area shape="rect" coords="534,272,594,332" href="javascript:city_location(10);" title="空地" alt="空地" />
+    <area shape="rect" coords="459,272,519,332" href="javascript:city_location(9);" title="空地" alt="空地" />
+    <area shape="rect" coords="384,272,444,332" href="javascript:city_location(8);" title="空地" alt="空地" />
+    <area shape="rect" coords="404,197,464,257" href="javascript:city_location(4);" title="空地" alt="空地" />
+    <area shape="rect" coords="486,197,546,257" href="javascript:city_location(5);" title="空地" alt="空地" />
+    <area shape="rect" coords="424,123,484,183" href="javascript:city_location(19);" title="空地" alt="空地" />
+    <area shape="rect" coords="250,276,310,336" href="javascript:city_location(7);" title="空地" alt="空地" />
+    <area shape="rect" coords="176,276,236,336" href="javascript:city_location(6);" title="空地" alt="空地" />
+    <area shape="rect" coords="243,202,303,262" href="javascript:city_location(3);" title="空地" alt="空地" />
+    <area shape="rect" coords="369,38,465,109" href="javascript:city_location(0);" title="空地" alt="空地" />
+    <area shape="rect" coords="620,222,680,282" href="javascript:city_location(33);" title="空地" alt="空地" />
+    <area shape="rect" coords="700,197,760,257" href="javascript:city_location(34);" title="空地" alt="空地" />
+    <area shape="rect" coords="21,523,81,583" href="javascript:city_location(26);" title="空地" alt="空地" />
+    <area shape="rect" coords="20,201,80,261" href="javascript:city_location(30);" title="空地" alt="空地" />
+    <area shape="rect" coords="20,277,80,337" href="javascript:city_location(28);" title="空地" alt="空地" />
+    <area shape="rect" coords="96,277,156,337" href="javascript:city_location(29);" title="空地" alt="空地" />
+    <area shape="rect" coords="95,201,155,261" href="javascript:city_location(31);" title="空地" alt="空地" />
+    <area shape="rect" coords="168,201,228,261" href="javascript:city_location(32);" title="空地" alt="空地" />
+    <area shape="rect" coords="20,353,80,413" href="javascript:city_location(27);" title="空地" alt="空地" />
+    <area shape="rect" coords="718,273,778,333" href="javascript:city_location(35);" title="空地" alt="空地" />
+    <area shape="rect" coords="97,523,157,583" href="javascript:city_location(25);" title="空地" alt="空地" />
+    <area shape="rect" coords="172,522,232,582" href="javascript:city_location(24);" title="空地" alt="空地" />
+    <area shape="rect" coords="245,478,316,540" href="javascript:city_location(20);" title="城门" alt="城门" />
+    <area shape="poly" coords="45,434,22,449,22,492,39,516,93,516,155,515,204,516,235,515,235,497,54,498,44,486" href="#" title="城墙" alt="城墙" />
+    <area shape="poly" coords="327,500,368,500,369,492,386,493,390,501,617,494,619,484,633,483,637,492,765,483,781,463,783,505,770,518,327,536" href="21" title="城墙" alt="城墙" />
+</map>
+
+<div id="city_map">
+
+    <img src="/media/imgs/city/city.jpg" border="0" width="800" height="600" usemap="#city" title="{% trans '文明【古代卷】' %}" alt="{% trans '文明【古代卷】' %}" longdesc="http://www.ThinkerUnion.com" />
+    <span id="city_name">{{ city.name|cut:" "|slice:":6"|upper|join:" " }}</span>
+
+    {% for building in building_list %}
+    	<a href="building/{{ building.id }}"><img id="l{{ building.location }}" src="/media/imgs/city/{{ city.era }}/{{ building.building_element.code }}.gif" title="{{ building.building_element.name }} {{ building.level }}{% trans '级' %}" alt="{{ building.building_element.name }} {{ building.level }}{% trans '级' %}" /></a>
+        {% if building.improvingbuilding_set.count %}
+            {% with building.improvingbuilding_set.all|first as improving_building %}
+                <span id="t{{ building.location }}" class="t" title="{% trans '剩余时间' %}">
+                    {% if improving_building.end_time|time2int|dict_filter:'days' %}{{ improving_building.end_time|time2int|dict_filter:'days' }}{% trans '天' %}{% endif %}
+                    <span id="{{ improving_building.id }}"><script>event_timer({{ improving_building.end_time|time2int|dict_filter:'time' }}, "{{ improving_building.id }}");</script></span>
+                </span>
+            {% endwith %}
+        {% endif %}
+    {% endfor %}
+
+    <span style="position:absolute; left:9px; top:4px; cursor:pointer" onclick="var l=document.getElementById('l').style; l.display=l.display=='none'?'':'none'; this.innerHTML=this.innerHTML=='{% trans '显示' %}{% trans '级别' %}'?'{% trans '隐藏' %}{% trans '级别' %}':'{% trans '显示' %}{% trans '级别' %}'">{% trans '显示' %}{% trans '级别' %}</span>
+    <span id="l" style="display:none">
+        {% for building in building_list %}
+            <span id="l{{ building.location }}" class="l" title="{% trans building.building_element.name %} {{ building.level }}{% trans '级' %}">{% trans building.building_element.name %} {{ building.level }}{% trans '级' %}</span>
+        {% endfor %}
+    </span>
+
+</div>
+
+{% endblock %}

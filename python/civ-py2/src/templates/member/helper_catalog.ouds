@@ -1,0 +1,15 @@
+{% extends "member/helper.ouds" %}
+
+{% load i18n member %}
+
+{% block catalog %} {% block entry_name %} {% endblock %} {% trans helper_catalog.name %} - {% endblock %}
+
+{% block body_id %}helper_catalog{% endblock %}
+
+{% block entries %}
+
+    {% helper_entry helper_catalog.slug language %}
+    {% block entry %} {% endblock %}
+
+{% endblock %}
+

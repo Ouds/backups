@@ -1,0 +1,43 @@
+{% extends "home.ouds" %}
+
+{% load i18n %}
+
+{% block title %} {% trans '会员注册' %} {% endblock %}
+
+{% block body_id %}member_register{% endblock %}
+
+{% block flash %} {% endblock %} {% block language %} {% endblock %}
+
+{% block matter %}
+
+<br/>
+
+<table align="center">
+    <caption><h2> {% trans '会员注册，细读条款' %} </h2></caption>
+    <tr>
+        <td>
+            <ol>
+                <li>非常感激您注册文明【古代卷】，请注意保护个人隐私。</li>
+                <li>请理解，我们有很多不足。</li>   
+                <li>请明白，我们在努力改进。</li>
+                <li>请支持，您定会得到回报。</li>
+            </ol>
+
+            <hr/>
+            
+            <form enctype="multipart/form-data" method="post">
+                <table align="center">
+				    {{ registration_form }}
+				    <tr><td align="center" colspan="2">
+				        <input type="submit" value="{% trans '已完全理解并同意以上条款，我决定注册' %}" />
+					<input type="button" value="{% trans '登录' %}" onclick="location.href='../sign_in'" />
+				    </td></tr>
+				</table>
+            </form>
+
+        </td>
+    </tr>
+</table>
+
+{% endblock %}
+

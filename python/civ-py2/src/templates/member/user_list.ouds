@@ -1,0 +1,68 @@
+{% extends "base.ouds" %}
+
+{% block page_info %}
+	<!--
+	# Author: 骛之
+	# Contact: postmaster@gaiding.com
+	# File Name: trade/trade_list.gd
+	# Revision: 0.1
+	# Date: 2007-2-15 1:33
+	# Description: the goods list.
+	-->
+{% endblock %} 
+
+{% block title %} 会员列表 {% endblock %}
+
+{% block body_id %}member{% endblock %}
+
+{% block matter %}
+
+	<table width="100%" align="center">
+		<caption>会员信息列表</caption>
+
+		<tr>
+			<th>注册时间</th>
+			<th>用户名</th>
+			<th>姓</th>
+			<th>名</th>
+			<th>邮件</th>
+			<th>最后登录</th>
+			<th>给她/他发短信</th>
+		</tr>
+	
+		{% for user in list %}
+	
+			<tr>
+				<td align="center"> {{ user.date_joined }} </td>
+				<td> {{ user.username }} </td>
+				<td> {{ user.first_name }} </td>
+				<td> {{ user.last_name }} </td>
+                                <td> {{ user.email }} </td>
+				<td align="center">{{ user.last_login }}</td>
+				<td align="center"><a href="">发短信</a></td>
+			</tr>
+		{% endfor %}
+	
+	</table>
+
+	<div style="width: 96%; text-align: right;">
+		<hr/>
+		共 {{ num_pages }} 页&nbsp;&nbsp;
+		当前第 {{ num_page }} 页&nbsp;&nbsp;
+		每页 {{ per_page }} 条信息&nbsp;&nbsp;
+		当前第 {{ start_index }} —  {{ end_index }} 条&nbsp;&nbsp;
+		<a href="/member/1">首页</a>&nbsp;&nbsp;
+		{% if previous_page %}<a href="/member/{{ previous_page }}"> 上页 </a>{% endif %}&nbsp;&nbsp;
+		{% if next_page %}<a href="/member/{{ next_page }}"> 下页 </a>{% endif %}&nbsp;&nbsp;
+		{% if next_page %}<a href="/member/{{ last_page }}"> 尾页 </a>{% endif %}&nbsp;&nbsp;
+		跳到第
+		<select onchange="location.href='/member/'+this.value">
+			{% for range in page_range %}
+				<option value="{{ range }}" {% ifequal range num_page %} selected="selected" {% endifequal %} > {{ range }} </option>
+			{% endfor %}
+		</select>
+		页
+	</div>
+
+{% endblock %}<!-- END #matter -->
+
