@@ -15,7 +15,7 @@
 bigdata@bdm1:~$ free -m
               total        used        free      shared  buff/cache   available
 Mem:           9998        5358        4231           8         408        4355
-Swap:          1531           0        531
+Swap:          2015           0        923
 ```
 
 ## 创建swap文件
@@ -81,4 +81,13 @@ UUID=2b6c48cb-728b-418d-9ddf-e7988d9e0c68 /boot           ext2    defaults      
 
 ``` Bash
 sync && sudo sync && sudo reboot
+```
+
+## 查看系统Swap空间是否生效
+
+``` Bash
+bigdata@bdm1:/usr/swap$ free -m
+              total        used        free      shared  buff/cache   available
+Mem:           9998        5470        4080           8         447        4243
+Swap:         19531           0       19531
 ```
