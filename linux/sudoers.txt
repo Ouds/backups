@@ -1,0 +1,11 @@
+如果把sudoer文件修改错误怎么办，如欲在sudoers文件中添加user ALL=(ALL) ALL这条语句，只添加了user,未添加ALL=(ALL) ALL就保存退出了，并切换到了普通用户。此时，如果普通用户在此使用sudoer su命令时，系统提示sudoers文件中有语法错误，导致命令不能执行，所以不能进入root权限,而sudoers又只能在root权限下才能修改。
+
+解决方法：
+
+1，重启系统
+2，启动时按shift,选择recovery mode,此时就是以root权限进入系统了，在这里对/etc/sudoers文件进行修改
+3，/etc/sudoers默认是只读文件，所以先改变他的属性，输入chmod 440 /etc/sudoers
+4，如果提示没有权限，或者不允许修改，就先输入 
+mount -o remount rw /
+然后更改权限即可。
+如果内容有错误，可以vi /etc/sudoers 进入修改。或者将以前添加的错误部分删除再保存。
