@@ -57,7 +57,7 @@ Setting up swapspace version 1, size = 999996 KiB
 no label, UUID=7eec8e34-e5d9-48f7-aa71-098900r48e46
 ```
 
-## 开机自启，则需修改文件/etc/fstab中的swap行
+## 开机自启，需修改/etc/fstab中的swap行
 
 ``` Bash
 bigdata@bdm1:/usr/swap$ sudo vi /etc/fstab
