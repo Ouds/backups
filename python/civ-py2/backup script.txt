@@ -1,4 +1,0 @@
-﻿pg_dump -f e:/sql/city_buildingelement.sql -a -D -E UTF-8 -O -t city_buildingelement -i civ
-pg_dump -f e:/sql/city_forceelement.sql -a -D -E UTF-8 -O -t city_forceelement -i civ
-pg_dump -f e:/sql/city_proelement.sql -a -D -E UTF-8 -O -t city_proelement -i civ
-pg_dump -f e:/sql/city_wareelement.sql -a -D -E UTF-8 -O -t city_wareelement -i civ
