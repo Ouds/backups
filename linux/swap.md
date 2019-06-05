@@ -24,8 +24,10 @@ Swap:          2015           0        923
 bigdata@bdm1:~$ sudo mkdir /usr/swap
 bigdata@bdm1:~$ sudo touch /usr/swap/swapfile1
 bigdata@bdm1:~$ cd /usr/swap/
-bigdata@bdm1:/usr/swap$ ll
-total 0
+bigdata@bds1:/usr/swap$ ll
+total 8
+drwxr-xr-x  2 root root 4096 Jun  5 10:55 ./
+drwxr-xr-x 11 root root 4096 Jun  5 10:55 ../
 bigdata@bdm1:/usr/swap$ sudo dd if=/dev/zero of=/usr/swap/swapfile1 bs=1024 count=20000000
 记录了20000000+0 的读入
 记录了20000000+0 的写出
