@@ -8,10 +8,9 @@ sudo apt autoremove; sudo apt autoclean; sudo apt update; sudo apt upgrade -y; s
 
 ## root - ssh
 
-``` Bash
-sudo passwd root
-sudo vi /etc/ssh/sshd_config
-```
+启用root账号（若未开启）：`sudo passwd root`
+
+编辑配置文件：`sudo vi /etc/ssh/sshd_config`
 
 找到如下配置——
 
