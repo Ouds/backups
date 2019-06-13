@@ -6,6 +6,34 @@
 sudo apt autoremove; sudo apt autoclean; sudo apt update; sudo apt upgrade -y; sudo apt autoremove; sudo apt autoclean; sudo shutdown -h now
 ```
 
+## root - ssh
+
+``` Bash
+sudo passwd root
+sudo vi /etc/ssh/sshd_config
+```
+
+找到如下配置——
+
+``` Markdown
+# Authentication:
+#LoginGraceTime 120
+#PermitRootLogin prohibit-password
+#StrictModes yes
+```
+
+更改为——
+
+``` Markdown
+# Authentication:
+LoginGraceTime 120
+#PermitRootLogin prohibit-password
+PermitRootLogin yes
+StrictModes yes
+```
+
+重启ssh：`sudo service ssh restart`
+
 ## linux命令
 
 ``` Bash
