@@ -13,7 +13,7 @@ git config --global credential.helper store
 
 ## `github`提速配置（清除`DNS`污染）
 
-从`https://ipaddress.com`查询`github.com`、`assets-cdn.github.com`、`github.global.ssl.fastly.net`三个`github`相关域名的对应`IP`，配置在`hosts`中。如下示例：
+从https://ipaddress.com查询`github.com`、`assets-cdn.github.com`、`github.global.ssl.fastly.net`三个`github`相关域名的对应`IP`，配置在`hosts`中。如下示例：
 
 ``` Markdown
 192.30.253.112 github.com
