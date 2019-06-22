@@ -9,7 +9,9 @@ source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
-"set guifont=ËÎÌå:h12,Georgia:h12
+"å­—ä½“è®¾ç½®
+"set guifont=å®‹ä½“:h12,Georgia:h12
+set guifont=Courier\ New:h12
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,chinese,gb18030,gbk,gb2312,cp936,ucs-bom
@@ -49,40 +51,40 @@ function MyDiff()
   endif
 endfunction
 
-"Óï·¨¸ßÁÁ
+"è¯­æ³•é«˜äº®
 syntax on
-"×Ô¶¯¼ì²âÎÄ¼şÀàĞÍ²¢¼ÓÔØÏàÓ¦µÄÉèÖÃ
+"è‡ªåŠ¨æ£€æµ‹æ–‡ä»¶ç±»å‹å¹¶åŠ è½½ç›¸åº”çš„è®¾ç½®
 filetype plugin indent on
 
 colorscheme evening
 set number
 set nowrap
 
-"×Ô¶¯Ëõ½ø
+"è‡ªåŠ¨ç¼©è¿›
 set autoindent
-"×Ô¶¯Ëõ½ø¸ñÊ½
+"è‡ªåŠ¨ç¼©è¿›æ ¼å¼
 set cindent
-"ÖÇÄÜ¶ÔÆë·½Ê½
+"æ™ºèƒ½å¯¹é½æ–¹å¼
 set smartindent
 
 set expandtab
 set smarttab
 
-"ÖÆ±í·û¿í¶È
+"åˆ¶è¡¨ç¬¦å®½åº¦
 set tabstop=4
 set softtabstop=4
-"Ëõ½ø¿Õ¸ñÊı
+"ç¼©è¿›ç©ºæ ¼æ•°
 set shiftwidth=4
 
-"È±Ê¡²»²úÉúµÄÎÄ¼ş
+"ç¼ºçœä¸äº§ç”Ÿçš„æ–‡ä»¶
 set nobackup
 set noundofile
 set noswapfile
 
 "Toggle Menu and Toolbar
-""ÍêÈ«Òş²Ø²Ëµ¥
+""å®Œå…¨éšè—èœå•
 set guioptions-=m
-"ÍêÈ«Òş²Ø¹¤¾ßÀ¸
+"å®Œå…¨éšè—å·¥å…·æ 
 set guioptions-=T
 map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions-=T <Bar>
@@ -92,14 +94,11 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
         \set guioptions+=m <Bar>
     \endif<CR>
 
-"½â¾ö²Ëµ¥ÂÒÂë  
+"è§£å†³èœå•ä¹±ç   
 source $VIMRUNTIME/delmenu.vim  
 source $VIMRUNTIME/menu.vim  
   
-"½â¾öconsleÊä³öÂÒÂë  
+"è§£å†³consleè¾“å‡ºä¹±ç   
 language messages zh_CN.utf-8
-
-
-
 
 
