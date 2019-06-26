@@ -29,8 +29,6 @@ Python 是一种容易理解的编程语言，这是我在本教程中选择它�
 
  首先定义一下我们将要构建的应用程序的用途。我们的目的是构建一个允许用户共享信息的简单网站。因为内容将存储在区块链中，所以它无法更改且会永远存在。
 
-
-
 ## 实现
 
 我们将采用自下而上的实现方式。首先定义我们将存储在区块链中的数据的结构。 
@@ -120,7 +118,6 @@ def compute_hash(block):
 from hashlib import sha256
 import json
 import time
-
 
 class Block:
     def __init__(self, index, transactions, timestamp, previous_hash):
@@ -391,7 +388,6 @@ def validate_and_add_block():
 
     return "区块已添加到链", 201
 
-
 def announce_new_block(block):
     for peer in peers:
         url = "http://{}/add_block".format(peer)
@@ -416,7 +412,6 @@ def register_new_peers():
     peers.add(node_address)
 
     return get_chain()
-
 
 @app.route('/register_with', methods=['POST'])
 def register_with_existing_node():
@@ -444,7 +439,6 @@ def register_with_existing_node():
     else:
         return response.content, response.status_code
 
-
 def create_chain_from_dump(chain_dump):
     blockchain = Blockchain()
     for idx, block_data in enumerate(chain_dump):
@@ -464,8 +458,7 @@ def create_chain_from_dump(chain_dump):
 
 ### 构建应用程序
 
-好了，后端都设置好了。
-现在，是时候创建应用程序的接口了。我们使用了 Jinja2 模板来呈现网页和一些 CSS，让页面看起来美观一些。
+后端已经完成，现在是时候创建应用程序的接口了。我们使用了`Jinja2`模板来呈现网页和一些`CSS`，让页面看起来美观一些。
 
 我们的应用程序需要连接到区块链网络中的某个节点，以便抓取数据和提交新数据。也可能存在多个节点：
 
@@ -532,8 +525,6 @@ def submit_textarea():
 
 ## 运行应用程序
 
-大功告成！
-
 ### 要运行该应用程序：
 
 启动一个区块链节点服务器：
@@ -550,3 +541,33 @@ def submit_textarea():
 ```
 
 访问URL：http://localhost:5000
+
+## 多节点运行
+
+若要部署在多节点环境中，使用`add_nodes/`注册新的节点。
+
+```sh
+# 已运行
+$ flask run --port 8000
+# 预备新的节点
+$ flask run --port 8001
+$ flask run --port 8002
+```
+
+使用`cURL`请求在端口`8001`和`8002`上用已运行的`8000`端口注册节点。 
+
+```sh
+curl -X POST \
+  http://127.0.0.1:8001/register_with \
+  -H 'Content-Type: application/json' \
+  -d '{"node_address": "http://127.0.0.1:8000"}'
+
+curl -X POST \
+  http://127.0.0.1:8002/register_with \
+  -H 'Content-Type: application/json' \
+  -d '{"node_address": "http://127.0.0.1:8000"}'
+```
+
+前端应用程序与节点的同步更新，请更改`views.py`文件中的`CONNECTED_NODE_ADDRESS`字段。
+
+这将更新具有最长链的新节点和对等点列表，以便它们能够在积极参与挖掘过程后注册。
