@@ -1,3 +1,19 @@
+# 安装PostgreSQL
+
+适用于 `Bionic(Ubuntu 18.04)`
+
+``` Bash
+sudo touch /etc/apt/sources.list.d/pgdg.list
+sudo vi /etc/apt/sources.list.d/pgdg.list
+```
+
+添加一行 `deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main`
+
+``` Bash
+sudo apt update
+sudo apt install -y postgresql-11
+```
+
 # 修改系统postgres用户密码
 
 PostgreSQL会创建一个默认的linux用户postgres，修改该用户密码的方法如下：
