@@ -22,7 +22,7 @@ PostgreSQL会创建一个默认的linux用户postgres，修改该用户密码的
 - 步骤二：设置用户postgres的密码
 
 ``` Bash
-sudo  passwd -d postgre
+sudo  passwd -d postgres
 sudo -u postgres passwd
 Enter new UNIX password:
 Retype new UNIX password:
