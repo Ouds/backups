@@ -11,8 +11,6 @@
 
 ## 查看系统Swap空间使用
 
-
-
 ``` Bash
 bigdata@bdm1:~$ free -m
               total        used        free      shared  buff/cache   available
@@ -95,3 +93,7 @@ bigdata@bdm1:/usr/swap$ free -m
 Mem:           9998        5470        4080           8         447        4243
 Swap:         19531           0       19531
 ```
+
+
+
+ddddddddddddddddddd
