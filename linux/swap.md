@@ -93,11 +93,3 @@ bigdata@bdm1:/usr/swap$ free -m
 Mem:           9998        5470        4080           8         447        4243
 Swap:         19531           0       19531
 ```
-
-
-
-ddddddddddddddddddd
-
-2222222222222222222
-
-333333333333333333
