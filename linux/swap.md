@@ -11,6 +11,8 @@
 
 ## 查看系统Swap空间使用
 
+
+
 ``` Bash
 bigdata@bdm1:~$ free -m
               total        used        free      shared  buff/cache   available
