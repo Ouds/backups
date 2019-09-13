@@ -10,6 +10,14 @@ sudo vi /etc/apt/sources.list.d/pgdg.list
 添加一行 `deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main`
 
 ``` Bash
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+```
+
+若添加 `OpenPGP key` 出现错误：`gpg: no valid OpenPGP data found.`
+
+``` Bash
+sudo apt install ca-certificates
+
 sudo apt update
 sudo apt install -y postgresql-11
 ```
