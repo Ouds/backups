@@ -1,4 +1,4 @@
-# 安装PostgreSQL
+# 安装 PostgreSQL
 
 适用于 `Bionic(Ubuntu 18.04)`
 
@@ -22,12 +22,12 @@ sudo apt update
 sudo apt install -y postgresql-11
 ```
 
-# 修改系统postgres用户密码
+# 修改系统 postgres 用户密码
 
-PostgreSQL会创建一个默认的linux用户postgres，修改该用户密码的方法如下：
+PostgreSQL 会创建一个默认的 linux 用户 postgres，修改该用户密码的方法如下：
 
-- 步骤一：删除用户postgres的密码
-- 步骤二：设置用户postgres的密码
+- 步骤一：删除用户 postgres 的密码
+- 步骤二：设置用户 postgres 的密码
 
 ``` Bash
 sudo  passwd -d postgres
@@ -37,14 +37,21 @@ Retype new UNIX password:
 passwd: password updated successfully
 ```
  
-# 修改数据库默认用户postgres密码
+# 修改数据库默认用户 postgres 密码
 
-PostgreSQL数据库创建一个postgres用户作为数据库的管理员，密码随机，所以需要修改密码，方式如下：
+PostgreSQL 数据库创建一个 postgres 用户作为数据库的管理员，密码随机，所以需要修改密码，方式如下：
 
-- 步骤一：登录PostgreSQL
-- 步骤二：修改登录PostgreSQL密码
+- 步骤一：登录 PostgreSQL
+- 步骤二：修改登录 PostgreSQL 密码
 
 ``` Bash
 sudo -u postgres psql
-ALTER USER postgres WITH PASSWORD 'postgres';
+postgres=# ALTER USER postgres WITH PASSWORD 'postgres';
+```
+
+# 查看 PostgreSQL 配置文件位置
+
+``` Bash
+sudo -u postgres psql
+postgres=# select name, setting from pg_settings where category='File Locations';
 ```
