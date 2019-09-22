@@ -26,6 +26,15 @@
 13.226.15.56 static.rust-lang.org
 13.226.15.67 static.rust-lang.org
 
+3.213.5.196 crates.io
+3.217.182.206 crates.io
+3.223.24.224 crates.io
+34.197.213.11 crates.io
+52.7.140.64 crates.io
+52.7.241.210 crates.io
+52.201.75.180 crates.io
+54.236.200.27 crates.io
+
 13.226.15.49 docs.rs
 13.226.15.90 docs.rs
 13.226.15.93 docs.rs
@@ -57,5 +66,6 @@
 
 17.253.25.203 developer.apple.com
 17.253.25.207 developer.apple.com
+
 
 
