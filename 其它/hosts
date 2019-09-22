@@ -1,14 +1,8 @@
-# For example:
-#
-#      102.54.94.97     rhino.acme.com          # source server
-#       38.25.63.10     x.acme.com              # x client host
-
 # localhost name resolution is handled within DNS itself.
 #	127.0.0.1       localhost
 #	::1             localhost
 
-192.30.253.112 github.com
-192.30.253.113 github.com
+140.82.113.4 github.com
 
 185.199.108.153 assets-cdn.github.com
 185.199.109.153 assets-cdn.github.com
@@ -20,32 +14,32 @@
 185.199.110.154 github.githubassets.com
 185.199.111.154 github.githubassets.com
 
-151.101.185.194 github.global.ssl.fastly.net
+199.232.5.194 github.global.ssl.fastly.net
 
-13.33.155.57 rust-lang.org
-13.33.155.80 rust-lang.org
-13.33.155.204 rust-lang.org
-13.33.155.254 rust-lang.org
+13.226.15.19 rust-lang.org
+13.226.15.43 rust-lang.org
+13.226.15.65 rust-lang.org
+13.226.15.79 rust-lang.org
 
-13.249.87.10 static.rust-lang.org
-13.249.87.26 static.rust-lang.org
-13.249.87.54 static.rust-lang.org
-13.249.87.65 static.rust-lang.org
+13.226.15.29 static.rust-lang.org
+13.226.15.52 static.rust-lang.org
+13.226.15.56 static.rust-lang.org
+13.226.15.67 static.rust-lang.org
 
 13.226.15.49 docs.rs
 13.226.15.90 docs.rs
 13.226.15.93 docs.rs
 13.226.15.98 docs.rs
 
-13.249.87.4 rustup.rs
-13.249.87.25 rustup.rs
-13.249.87.94 rustup.rs
-13.249.87.97 rustup.rs
+99.84.168.13 rustup.rs
+99.84.168.64 rustup.rs
+99.84.168.65 rustup.rs
+99.84.168.127 rustup.rs
 
-13.249.55.3 sh.rustup.rs
-13.249.55.56 sh.rustup.rs
-13.249.55.74 sh.rustup.rs
-13.249.55.78 sh.rustup.rs
+99.84.254.9 sh.rustup.rs
+99.84.254.51 sh.rustup.rs
+99.84.254.59 sh.rustup.rs
+99.84.254.89 sh.rustup.rs
 
 151.101.1.69 stackoverflow.com
 151.101.65.69 stackoverflow.com
@@ -59,10 +53,9 @@
 17.172.224.47 apple.com
 17.178.96.59 apple.com
 
-17.32.194.37 appleid.apple.com
+17.32.194.6 appleid.apple.com
 
-17.253.25.204 developer.apple.com
+17.253.25.203 developer.apple.com
 17.253.25.207 developer.apple.com
-
 
 
