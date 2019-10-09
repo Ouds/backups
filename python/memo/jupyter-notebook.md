@@ -12,11 +12,12 @@ vi jupyter_notebook_config.py
 ```
 
 ``` Python
-c.NotebookApp.ip='0.0.0.0' # 可以指定ip
-c.NotebookApp.password = u'sha1:9b23ce21f3cf:78fe4dc3e506525727... # 上面生成的password'
-c.NotebookApp.open_browser = False
+c.NotebookApp.ip = '0.0.0.0' # 可以指定ip
 c.NotebookApp.port = 8888
+c.NotebookApp.notebook_dir = ''  # 指定工作目录
+c.NotebookApp.password = '' # 上面加密生成的password
 c.NotebookApp.quit_button = False
+c.NotebookApp.open_browser = False
 ```
 
 ### 集成jupytext
