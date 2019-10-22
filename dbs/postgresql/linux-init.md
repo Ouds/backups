@@ -19,7 +19,7 @@ wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-
 sudo apt install ca-certificates
 
 sudo apt update
-sudo apt install -y postgresql-11
+sudo apt install -y postgresql-1*
 ```
 
 # 修改系统 postgres 用户密码
@@ -46,7 +46,7 @@ PostgreSQL 数据库创建一个 postgres 用户作为数据库的管理员，�
 
 ``` Bash
 sudo -u postgres psql
-postgres=# ALTER USER postgres WITH PASSWORD 'postgres';
+postgres=# ALTER USER postgres WITH PASSWORD 'postgres*';
 ```
 
 # 查看 PostgreSQL 配置文件位置
