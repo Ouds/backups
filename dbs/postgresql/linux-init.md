@@ -55,3 +55,8 @@ postgres=# ALTER USER postgres WITH PASSWORD 'postgres*';
 sudo -u postgres psql
 postgres=# select name, setting from pg_settings where category='File Locations';
 ```
+
+# 配置 PostgreSQL 远程访问
+
+- `postgresql.conf` 中配置 `listen_addresses`；
+- `pg_hba.conf ` 中添加 `host`。
