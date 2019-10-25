@@ -12,10 +12,10 @@ vi jupyter_notebook_config.py
 ```
 
 ``` Python
-c.NotebookApp.ip = '0.0.0.0' # 可以指定ip
+c.NotebookApp.ip = u'0.0.0.0' # 可以指定ip
 c.NotebookApp.port = 8888
-c.NotebookApp.notebook_dir = ''  # 指定工作目录
-c.NotebookApp.password = '' # 上面加密生成的password
+c.NotebookApp.notebook_dir = u''  # 指定工作目录
+c.NotebookApp.password = u'' # 上面加密生成的password
 c.NotebookApp.quit_button = False
 c.NotebookApp.open_browser = False
 ```
@@ -27,5 +27,5 @@ c.NotebookApp.open_browser = False
 - jupyter nbextension enable --py jupytext [--user]
 
 ``` Python
-c.NotebookApp.contents_manager_class = "jupytext.TextFileContentsManager"
+c.NotebookApp.contents_manager_class = u'jupytext.TextFileContentsManager'
 ```
