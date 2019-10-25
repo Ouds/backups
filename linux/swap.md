@@ -54,7 +54,7 @@ no label, UUID=7eec8e34-e5d9-48f7-aa71-098900r48e46
 ## 激活swap，立即启用交换分区文件
 
 ``` Bash
-bigdata@bdmaster:/usr/swap$ swapon /usr/swap/swapfile
+bigdata@bdmaster:/usr/swap$ sudo swapon /usr/swap/swapfile
 Setting up swapspace version 1, size = 999996 KiB
 no label, UUID=7eec8e34-e5d9-48f7-aa71-098900r48e46
 ```
