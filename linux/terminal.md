@@ -3,7 +3,7 @@
 ## ubuntu-apt
 
 ``` Bash
-sudo apt autoremove; sudo apt autoclean; sudo apt update; sudo apt upgrade -y; sudo apt autoremove; sudo apt autoclean; sudo shutdown -h now
+sudo apt autoremove --purge; sudo apt autoclean; sudo apt clean; sudo apt update; sudo apt upgrade -y; sudo apt full-upgrade -y; sudo apt autoremove --purge; sudo apt autoclean; sudo apt clean; sudo shutdown -h now
 ```
 
 ## root - ssh
