@@ -31,6 +31,7 @@ sudo chown -R postgres:postgres /usr/local/pgsql
 ``` Bash 
 su - postgres
 vi ~/.profile
+
 export PGHOME=/usr/local/pgsql
 export PGDATA=$PGHOME/data
 export PGHOST=/tmp
@@ -48,13 +49,42 @@ initdb -D /usr/local/pgsql/data
 pg_ctl -D /usr/local/pgsql/data -l logfile start
 ```
 
-# 设置开机自启动
+# 配置 systemd 及开机自启
+
+``` Bash
+sudo cp ~/postgresql-12.1/contrib/start-scripts/linux /usr/local/pgsql/postgresql
+sudo vi /usr/local/pgsql/postgresql # 检查环境变量
+sudo chmod a+x /usr/local/pgsql/postgresql
+# 验证
+/usr/local/pgsql/postgresql start
+/usr/local/pgsql/postgresql stop
+# 创建 service 文件
+sudo touch /etc/systemd/system/postgresql.service
+sudo vi /etc/systemd/system/postgresql.service
+
+[Unit]
+Description=PostgreSQL-12.1
+
+[Service]
+ExecStart=/usr/local/pgsql/postgresql start
+
+[Install]
+WantedBy=multi-user.target
+
+# 开机自启
+sudo systemctl daemon-reload
+sudo systemctl enable postgresql.service
+# systemctl 启动
+sudo systemctl start  postgresql.service
+```
+
+# 配置 init.d（不推荐）
 
 ``` Bash
 sudo cp ~/postgresql-12.1/contrib/start-scripts/linux /etc/init.d/postgresql
 sudo vi /etc/init.d/postgresql # 检查环境变量
 sudo chmod a+x /etc/init.d/postgresql
 # 验证
-service postgresql stop
 service postgresql start
+service postgresql stop
 ```
