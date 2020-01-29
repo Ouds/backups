@@ -1,4 +1,4 @@
-# 获取 PostgreSQL 源码
+# 获取源码
 
 ``` Bash
 wget https://ftp.postgresql.org/pub/source/v12.1/postgresql-12.1.tar.gz
@@ -7,7 +7,7 @@ tar xf postgresql-12.1.tar
 cd postgresql-12.1
 ```
 
-# 配置、编译，安装
+# 配置、编译、安装
 
 ``` Bash
 sudo apt install libreadline6-dev zlib1g-dev
@@ -18,7 +18,7 @@ cd contrib
 sudo make && make install
 ```
 
-# 创建用户，赋予权限
+# 用户及权限
 
 ``` Bash
 sudo deluser postgres
@@ -26,7 +26,7 @@ sudo adduser postgres
 sudo chown -R postgres:postgres /usr/local/pgsql
 ```
 
-# 配置 postgres 用户环境变量
+# 用户环境变量
 
 ``` Bash 
 su - postgres
@@ -49,7 +49,7 @@ initdb -D /usr/local/pgsql/data
 pg_ctl -D /usr/local/pgsql/data -l logfile start
 ```
 
-# 配置 systemd 及开机自启
+# systemd 及开机自启
 
 ``` Bash
 sudo cp ~/postgresql-12.1/contrib/start-scripts/linux /usr/local/pgsql/postgresql
@@ -78,7 +78,7 @@ sudo systemctl enable postgresql.service
 sudo systemctl start  postgresql.service
 ```
 
-# 配置 init.d（不推荐）
+# init.d（不推荐）
 
 ``` Bash
 sudo cp ~/postgresql-12.1/contrib/start-scripts/linux /etc/init.d/postgresql
