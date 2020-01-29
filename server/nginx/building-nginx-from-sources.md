@@ -23,6 +23,7 @@ sudo /usr/local/nginx/sbin/nginx -s reload
 sudo /usr/local/nginx/sbin/nginx -s stop
 ```
 
+<del>
 # systemd 及开机自启
 
 ``` Bash
@@ -45,3 +46,4 @@ sudo systemctl enable nginx.service
 # systemctl 启动
 sudo systemctl start nginx.service
 ```
+</del>
