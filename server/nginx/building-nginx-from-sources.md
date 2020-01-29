@@ -22,3 +22,26 @@ sudo /usr/local/nginx/sbin/nginx
 sudo /usr/local/nginx/sbin/nginx -s reload
 sudo /usr/local/nginx/sbin/nginx -s stop
 ```
+
+# systemd 及开机自启
+
+``` Bash
+# 创建 service 文件
+sudo touch /etc/systemd/system/nginx.service
+sudo vi /etc/systemd/system/nginx.service
+
+[Unit]
+Description=nginx-1.16
+
+[Service]
+ExecStart=/usr/local/nginx/sbin/nginx
+
+[Install]
+WantedBy=multi-user.target
+
+# 开机自启
+sudo systemctl daemon-reload
+sudo systemctl enable nginx.service
+# systemctl 启动
+sudo systemctl start nginx.service
+```

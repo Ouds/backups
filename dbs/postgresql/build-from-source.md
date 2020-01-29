@@ -75,7 +75,7 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload
 sudo systemctl enable postgresql.service
 # systemctl 启动
-sudo systemctl start  postgresql.service
+sudo systemctl start postgresql.service
 ```
 
 # init.d（不推荐）
