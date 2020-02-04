@@ -37,7 +37,7 @@ export PGDATA=$PGHOME/data
 export PGHOST=/tmp
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH:$PGHOME/bin
 export MANPATH=$PGHOME/share/man:$MANPATH
-export LANG=zh_CN.utf8
+export LANG=en_US.utf8
 export DATE=`date +"%Y-%m-%d %H:%M:%S"`
 export LD_LIBRARY_PATH=$PGHOME/lib:$LD_LIBRARY_PATH
 ```
