@@ -46,7 +46,7 @@ PostgreSQL 数据库创建一个 postgres 用户作为数据库的管理员，�
 
 ``` Bash
 sudo -u postgres psql
-postgres=# ALTER USER postgres WITH PASSWORD 'postgres*';
+postgres=# ALTER USER postgres WITH PASSWORD 'postgres';
 ```
 
 # 查看 PostgreSQL 配置文件位置
