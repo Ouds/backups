@@ -11,3 +11,13 @@
 ## failed to run custom build command for `openssl-sys v...`
 
 安装 libssl-dev、pkg-config（重要）
+
+## vscode-remote - `wsl/ssh: Permission denied(os error 13)`
+
+配置 `settings.json`——
+
+``` json
+    "files.watcherExclude": {
+        "**/target/": true
+    }
+```
