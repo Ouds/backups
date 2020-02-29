@@ -12,7 +12,7 @@
 
 安装 libssl-dev、pkg-config（重要）
 
-## vscode-remote - `wsl/ssh: Permission denied(os error 13)`
+## 仅限 WSL1 `vscode-remote: Permission denied(os error 13)`
 
 配置 `settings.json`——
 
