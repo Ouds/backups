@@ -10,7 +10,7 @@
 
 ## error: failed to run custom build command for `openssl-sys v...`
 
-安装 `pkg-config`、`libssl-dev`（重要）
+安装 `pkg-config`（重要）、`libssl-dev`
 
 ## 仅限 WSL1 `vscode-remote: Permission denied(os error 13)`
 
