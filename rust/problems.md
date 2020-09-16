@@ -21,3 +21,7 @@
         "**/target/": true
     }
 ```
+
+## error: failed to run custom build command for `openssl-sys v...`
+
+安装 `pkg-config`、`libssl-dev`
