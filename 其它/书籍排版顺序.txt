@@ -1,0 +1,21 @@
+Foreword，preface，introduction ……
+
+在书籍中，这三个字都位在正文之前的开头若干页，但查阅任何一本英汉字典，它们的中文解释不是序言、前言就是引言、导言或绪论或兼而有之，乍看之下，它们似乎是同义词，非也! 虽然它们的中文意思相近，但事实上它们不但不是同义词，而且还是意义明显不同的三个字，千万别搞混了!
+
+虽然不同的出版商和编辑对这三个名词的定义可能不同，但根据著名和权威的《芝加哥文体手册》(The Chicago Manual of Style)，foreword 和 preface 意为「序 (言)」，但 foreword 是由作者以外的某人或某些人所撰写，可能是业界的专家学者、同类型书籍的作家或其他人，而 preface 则是由作者本人所撰写。
+
+Foreword 通常只有一页或两页，写序者的名字 (都用签名)、头衔或所属机构通常会出现在 foreword 最后一页的底端。编辑也可能写序，而这个「序」也叫做 preface，即 Editor’s preface (编者的话)。在 preface 中，作者有时会感谢 (acknowledge) 那些给了他们写作灵感以及在写作过程中帮助过他们的人；不过，作者的感谢文经常自成一页，成为 Acknowledgements，位在 Preface 之后、Introduction 之前。preface 作者的名字通常也用签名，而写作的日期和地点通常位在打字排版的名字下面。必须注意的是，foreword 是英文中最常被拼错的单字之一，许多人将它拼成 foreward 或甚至 forward!
+
+Introduction (亦叫做 prolegomenon) 则意为「引言；前言；导言；绪论；简介」，顾名思义是书籍的内容简介，通常被视为正文的一部份，因此页码是从此编起，页数也是从此算起。introduction 是否需要存在，见仁见智，有人认为没有人会去读 introduction，但也有人认为 introduction 很重要，因为那是读者最先阅读的东西。introduction 往往以能吸引读者的叙述做开端。一般而言，preface 和 introduction 的内容不应重复，亦即 preface 的叙述不应出现在 introduction 中，反之亦然。
+
+书籍一般的排版顺序如下：
+
+Table of contents (目录)
+Foreword (by another person)
+Editor’s preface
+Author’s preface
+Acknowledgements
+Introduction
+Text
+
+
