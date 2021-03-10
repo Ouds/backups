@@ -1,4 +1,10 @@
-db.createUser({ user: "root", pwd: "mongo", roles: ["root"] })
+db.createUser(
+  {
+    user: "root",
+    pwd: "mongo",
+    roles: ["root"]
+  }
+)
 
 db.createUser(
   {
@@ -16,8 +22,19 @@ db.createUser(
   }
 )
 
-db.createUser({
-  user: "index",
-  pwd: "index",
-  roles: [{ role: "dbAdmin", db: "budshome-index" }]
-})
+db.createUser(
+  {
+    user: "index",
+    pwd: "Index^20204BudsHome",
+    roles: [
+      {
+        role: "dbAdmin",
+        db: "budshome-index"
+      },
+      {
+        role: "readWrite",
+        db: "budshome-index"
+      }
+    ]
+  }
+)
