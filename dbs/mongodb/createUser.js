@@ -25,7 +25,7 @@ db.createUser(
 db.createUser(
   {
     user: "index",
-    pwd: "Index^20204BudsHome",
+    pwd: "index",
     roles: [
       {
         role: "dbAdmin",
